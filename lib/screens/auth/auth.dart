@@ -2,11 +2,9 @@ import 'package:animations/animations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
-
 import 'package:recipe_batao/config/palette.dart';
 import 'package:recipe_batao/screens/auth/register.dart';
 import 'package:recipe_batao/screens/auth/sign_in.dart';
-
 import '../background_painter.dart';
 import '../home.dart';
 
