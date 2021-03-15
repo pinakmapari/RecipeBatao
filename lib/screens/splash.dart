@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 
 import 'auth/auth.dart';
-import 'home.dart';
+import 'package:recipe_batao/screens/dashboard/home.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key key}) : super(key: key);

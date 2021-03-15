@@ -6,7 +6,7 @@ import 'package:recipe_batao/config/palette.dart';
 import 'package:recipe_batao/screens/auth/register.dart';
 import 'package:recipe_batao/screens/auth/sign_in.dart';
 import '../background_painter.dart';
-import '../home.dart';
+import 'package:recipe_batao/screens/dashboard/home.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key key}) : super(key: key);
