@@ -54,9 +54,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+  - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -69,7 +68,67 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+      - family: AllThingsPink
+        fonts:
+          - asset: assets/fonts/allthingspink.ttf
+      - family: ALittleSunshine
+        fonts:
+          - asset: assets/fonts/alittlesunshine.ttf
+      - family: AlwaysInMyHeart
+        fonts:
+          - asset: assets/fonts/alwaysinmyheart.ttf
+      - family: BehindBlueEyes
+        fonts:
+          - asset: assets/fonts/behindblueeyes.ttf
+      - family: CartoonistHand
+        fonts:
+          - asset: assets/fonts/cartoonisthand.ttf
+      - family: Cathsgbr
+        fonts:
+          - asset: assets/fonts/cathsgbr.TTF
+      - family: ChocolateCoveredRainDrops
+        fonts:
+          - asset: assets/fonts/chocolatecoveredraindrops.ttf
+      - family: ClarksonDemo
+        fonts:
+          - asset: assets/fonts/clarksondemo.ttf
+      - family: Comingsoon
+        fonts:
+          - asset: assets/fonts/comingsoon.ttf
+      - family: FallIsComing
+        fonts:
+          - asset: assets/fonts/falliscoming.ttf
+      - family: HiddenMeanings
+        fonts:
+          - asset: assets/fonts/hiddenmeanings.ttf
+      - family: Lumos
+        fonts:
+          - asset: assets/fonts/lumos.ttf
+      - family: MyFirstCrush
+        fonts:
+          - asset: assets/fonts/myfirstcrush.ttf
+      - family: OpenSans
+        fonts:
+          - asset: assets/fonts/opensanscondensed_light.ttf
+      - family: Porkh
+        fonts:
+          - asset: assets/fonts/porkh.TTF
+      - family: Porkys
+        fonts:
+          - asset: assets/fonts/porkys.TTF
+      - family: QarmicSans
+        fonts:
+          - asset: assets/fonts/qarmicsansabridged.ttf
+      - family: RobotoMono
+        fonts:
+          - asset: assets/fonts/robotomono.ttf
+      - family: SensibleArmadillo
+        fonts:
+          - asset: assets/fonts/sensiblearmadillo.ttf
+      - family: WaysToSayGoodBye
+        fonts:
+          - asset: assets/fonts/waystosaygoodbye.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

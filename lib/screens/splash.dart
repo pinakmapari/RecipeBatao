@@ -45,3 +45,12 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
+
+getUser(BuildContext context) {
+  final litUser = context.getSignedInUser();
+  litUser.when((user) => print(user.uid), empty: () {
+    print('No user!');
+  }, initializing: () {
+    print('User Loading');
+  });
+}

@@ -6,9 +6,11 @@ import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:recipe_batao/config/palette.dart';
 import 'package:recipe_batao/screens/auth/register.dart';
 import 'package:recipe_batao/screens/auth/sign_in.dart';
+import 'package:recipe_batao/screens/home.dart';
+//import 'package:recipe_batao/screens/profile/profileEdit.dart';
 
 import '../background_painter.dart';
-import '../home.dart';
+import '../database.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key key}) : super(key: key);
@@ -53,7 +55,18 @@ class _AuthScreenState extends State<AuthScreen>
           ),
         ),
         onAuthSuccess: () {
-          Navigator.of(context).pushReplacement(HomeScreen.route);
+          final litUser = context.getSignedInUser();
+          litUser.when(
+            (user) {
+              Database().updateUserData(user.uid);
+            },
+            empty: () {},
+            initializing: () {},
+          );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomeScreen()),
+          );
         },
         child: Stack(
           children: [
