@@ -15,14 +15,16 @@ class Body extends StatelessWidget {
         //crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-              'Hello Insaan!',
-              style: TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2,
-              ),
+            'Hello Mrunmai!',
+            style: TextStyle(
+              fontSize: 35,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2,
+            ),
           ),
-          SizedBox(height: 15,),
+          SizedBox(
+            height: 15,
+          ),
           Text(
             'What would you like to eat today?',
             style: TextStyle(
@@ -31,28 +33,36 @@ class Body extends StatelessWidget {
               //letterSpacing: 2,
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Divider(
             color: Colors.black,
             thickness: 3,
             indent: 17,
             endIndent: 17,
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Row(
             children: [
-              SizedBox(width: 17,),
+              SizedBox(
+                width: 17,
+              ),
               Text(
                 'Latest Recipes:',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  ),
+                ),
                 textAlign: TextAlign.left,
               ),
             ],
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Latest(),
           //SizedBox(height: 10,),
           Divider(
@@ -80,9 +90,11 @@ class Body extends StatelessWidget {
               child: const Text('Sign out'),
             ),
           ),
-          SizedBox(height: 5,),
+          SizedBox(
+            height: 5,
+          ),
         ],
-    ),
+      ),
     );
   }
 }
