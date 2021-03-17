@@ -2,15 +2,18 @@ import 'package:animations/animations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
-
 import 'package:recipe_batao/config/palette.dart';
 import 'package:recipe_batao/screens/auth/register.dart';
 import 'package:recipe_batao/screens/auth/sign_in.dart';
-import 'package:recipe_batao/screens/home.dart';
+
+//import 'package:recipe_batao/screens/home.dart';
 //import 'package:recipe_batao/screens/profile/profileEdit.dart';
+//
+//import '../background_painter.dart';
+import '../database.dart';
 
 import '../background_painter.dart';
-import '../database.dart';
+import 'package:recipe_batao/screens/dashboard/home.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key key}) : super(key: key);
