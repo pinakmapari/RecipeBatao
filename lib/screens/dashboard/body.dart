@@ -81,15 +81,6 @@ class Body extends StatelessWidget {
           //SizedBox(height: 10,),
           RecipesGridView(),
           //SizedBox(height: 10,),
-          Center(
-            child: RaisedButton(
-              onPressed: () {
-                context.signOut();
-                Navigator.of(context).push(AuthScreen.route);
-              },
-              child: const Text('Sign out'),
-            ),
-          ),
           SizedBox(
             height: 5,
           ),
