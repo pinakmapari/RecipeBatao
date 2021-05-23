@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_batao/screens/profile/profile.dart';
 import 'package:recipe_batao/screens/myKitchen/myKitchen.dart';
+import 'package:lit_firebase_auth/lit_firebase_auth.dart';
+import 'package:recipe_batao/screens/auth/auth.dart';
 
 class MainDrawer extends StatelessWidget {
   final String name = 'Mrunmai';
@@ -92,10 +94,8 @@ class MainDrawer extends StatelessWidget {
             ),
             FlatButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyProfile()),
-                );
+                context.signOut();
+                Navigator.of(context).push(AuthScreen.route);
               },
               child: Text(
                 'Sign Out',
