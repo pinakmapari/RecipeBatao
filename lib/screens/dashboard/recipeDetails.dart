@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../my_kitchen/expiryDetails.dart';
+import '../myKitchen/expiryDetails.dart';
 
 class Recipes {
   const Recipes({this.name, this.imageName});

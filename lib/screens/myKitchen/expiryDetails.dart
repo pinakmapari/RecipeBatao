@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../my_kitchen/foodIconList.dart';
+import 'foodIconList.dart';
 
 class IngredientDetails extends StatefulWidget {
   @override
