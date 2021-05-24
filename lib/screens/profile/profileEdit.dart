@@ -51,7 +51,6 @@ class _ProfileEditState extends State<ProfileEdit> {
         chosen.add(key);
       }
     });
-    print(chosen);
     return chosen;
   }
 
@@ -304,8 +303,6 @@ class _ProfileEditState extends State<ProfileEdit> {
                         onChanged: (bool value) {
                           setState(() {
                             cuisines[key] = value;
-                            print(cuisines[key]);
-                            print(value);
                             chosenCuisines = getMyCuisines(cuisines);
                           });
                         },
@@ -314,26 +311,18 @@ class _ProfileEditState extends State<ProfileEdit> {
                   ),
                 ),
               ),
-              Row(
-                children: [
-                  Text(
-                    data.toString(),
-                  ),
-                  SizedBox(
-                    width: 50,
-                  ),
-                  RaisedButton(
-                    color: Colors.grey[800],
-                    onPressed: () {
-                      Database()
-                          .addData(name, email, phNo, age, chosenCuisines);
-                    },
-                    child: Text(
-                      'Done',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ],
+              RaisedButton(
+                color: Colors.grey[800],
+                onPressed: () {
+                  Database().addData(name, email, phNo, age, chosenCuisines);
+                  Database().fetchData();
+                  print(Database.data);
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Done',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),

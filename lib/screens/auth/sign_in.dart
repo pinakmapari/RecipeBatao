@@ -70,7 +70,7 @@ class SignIn extends StatelessWidget {
                         color: Colors.black54,
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 24.0,
                     ),
                     Row(

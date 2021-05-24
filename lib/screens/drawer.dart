@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_batao/screens/profile/profile.dart';
+import 'package:recipe_batao/screens/myKitchen/myKitchen.dart';
+import 'package:lit_firebase_auth/lit_firebase_auth.dart';
+import 'package:recipe_batao/screens/auth/auth.dart';
 
 class MainDrawer extends StatelessWidget {
   final String name = 'Mrunmai';
@@ -13,7 +16,7 @@ class MainDrawer extends StatelessWidget {
               height: 30.0,
             ),
             CircleAvatar(
-              backgroundImage: AssetImage('assets/food.jpg'),
+              backgroundImage: AssetImage('assets/cute_chefs.jpg'),
               radius: 50.0,
             ),
             SizedBox(
@@ -59,7 +62,7 @@ class MainDrawer extends StatelessWidget {
                 );
               },
               child: Text(
-                'Settings',
+                'Favourites',
                 style: TextStyle(
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold,
@@ -74,8 +77,25 @@ class MainDrawer extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyProfile()),
+                  MaterialPageRoute(builder: (context) => MyKitchen()),
                 );
+              },
+              child: Text(
+                'My Kitchen',
+                style: TextStyle(
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'CartoonistHand',
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            FlatButton(
+              onPressed: () {
+                context.signOut();
+                Navigator.of(context).push(AuthScreen.route);
               },
               child: Text(
                 'Sign Out',

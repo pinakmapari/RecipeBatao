@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:recipe_batao/config/palette.dart';
+
 import 'package:recipe_batao/screens/database.dart';
+
 //import 'package:recipe_batao/screens/database.dart';
 
 class EditPicture extends StatefulWidget {
@@ -106,11 +107,12 @@ class _EditPictureState extends State<EditPicture> {
             RaisedButton(
               onPressed: () {
                 Database().addImage(img);
+                Navigator.pop(context);
               },
               child: Text(
                 'Save',
                 style: TextStyle(
-                  color: Palette.amber,
+                  color: Colors.black,
                 ),
               ),
             )

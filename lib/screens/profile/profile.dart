@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_batao/screens/profile/profileEdit.dart';
+import 'package:recipe_batao/screens/database.dart';
 
 class MyProfile extends StatefulWidget {
   @override
@@ -7,8 +8,22 @@ class MyProfile extends StatefulWidget {
 }
 
 class _MyProfileState extends State<MyProfile> {
-  String userID = '';
-  String name, phone, email, age, img;
+  String name = '';
+  String phone = '';
+  String email = '';
+  String age = '';
+  String img = 'assets/food.jpg';
+  List cuisines;
+  Map data = Database.data;
+  void assignValues() {
+    name = data['name'];
+    phone = data['phno'];
+    age = data['age'];
+    email = data['email'];
+    //cuisines = data['cuisines'];
+    img = data['img'];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +52,7 @@ class _MyProfileState extends State<MyProfile> {
             children: <Widget>[
               Center(
                 child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/food.jpg'),
+                  backgroundImage: AssetImage(img),
                   radius: 40.0,
                 ),
               ),
@@ -61,7 +76,7 @@ class _MyProfileState extends State<MyProfile> {
                 height: 8.0,
               ),
               Text(
-                'Mrunmai',
+                name,
                 style: TextStyle(
                   color: Colors.blue[200],
                   letterSpacing: 2.0,
@@ -94,7 +109,7 @@ class _MyProfileState extends State<MyProfile> {
                 height: 8.0,
               ),
               Text(
-                'kshitiabhyankar@gmail.com',
+                email,
                 style: TextStyle(
                   color: Colors.blue[200],
                   letterSpacing: 2.0,
@@ -127,7 +142,7 @@ class _MyProfileState extends State<MyProfile> {
                 height: 8.0,
               ),
               Text(
-                '+91 95272 96748',
+                phone,
                 style: TextStyle(
                   color: Colors.blue[200],
                   letterSpacing: 1.0,
@@ -152,7 +167,7 @@ class _MyProfileState extends State<MyProfile> {
                 height: 8.0,
               ),
               Text(
-                '20',
+                age,
                 style: TextStyle(
                   color: Colors.blue[200],
                   letterSpacing: 2.0,
@@ -161,13 +176,19 @@ class _MyProfileState extends State<MyProfile> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(userID)
             ],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          setState(() {
+            Database().fetchData();
+            print(data);
+            data = Database.data;
+            //assignValues();
+          });
+
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ProfileEdit()),
