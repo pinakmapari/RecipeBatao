@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
-import 'package:recipe_batao/screens/recipe/newrecipe.dart';
+import 'package:recipe_batao/screens/recipe/explore_page.dart';
 import 'package:recipe_batao/screens/recipe/recipedetails.dart';
 import 'package:recipe_batao/screens/splash.dart';
 import 'config/palette.dart';
@@ -22,16 +22,16 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Material App',
         theme: ThemeData(
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-            textTheme: GoogleFonts.muliTextTheme(),
-            accentColor: Palette.darkBlue,
-            appBarTheme: AppBarTheme(color: Colors.cyan[100], elevation: 3),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          textTheme: GoogleFonts.muliTextTheme(),
+          accentColor: Palette.darkBlue,
+          appBarTheme: AppBarTheme(color: Colors.cyan[100], elevation: 3),
         ),
         // home: LitAuthState(
         //   authenticated: HomeScreen(),
         //   unauthenticated: AuthScreen(),
         // ),
-        home: NewRecipe(),
+        home: ExplorePage(),
       ),
     );
   }

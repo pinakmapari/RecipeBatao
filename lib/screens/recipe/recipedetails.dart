@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:recipe_batao/model/recipemodel.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class RecipeDetails extends StatelessWidget {
-  final RecipeModel recipeModel;
+  final recipeModel;
   RecipeDetails({
     @required this.recipeModel,
   });
@@ -46,14 +45,14 @@ class RecipeDetails extends StatelessWidget {
                 height: 30,
               ),
               Text(
-                recipeModel.title,
+                recipeModel['title'],
                 style: _textTheme.headline6,
               ),
               SizedBox(
                 height: 10,
               ),
               Text(
-                recipeModel.writer,
+                recipeModel['sourceName'],
                 style: _textTheme.caption,
               ),
               SizedBox(
@@ -69,7 +68,7 @@ class RecipeDetails extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    "198",
+                    recipeModel['spoonacularScore'].toString(),
                     // style: _textTheme.caption,
                   ),
                   SizedBox(
@@ -82,7 +81,7 @@ class RecipeDetails extends StatelessWidget {
                     width: 4,
                   ),
                   Text(
-                    recipeModel.cookingTime.toString() + '\'',
+                    recipeModel['readyInMinutes'].toString() + '\'',
                   ),
                   SizedBox(
                     width: 20,
@@ -96,7 +95,7 @@ class RecipeDetails extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    recipeModel.servings.toString() + ' Servings',
+                    recipeModel['servings'].toString() + ' Servings',
                   ),
                 ],
               ),
@@ -149,12 +148,17 @@ class RecipeDetails extends StatelessWidget {
                         child: TabBarView(
                           children: [
                             Ingredients(recipeModel: recipeModel),
-                            Container(
-                              child: Text("Preparation Tab"),
-                            ),
-                            Container(
-                              child: Text("Nutrition Tab"),
-                            ),
+
+                            recipeModel['analyzedInstructions'].isEmpty == false
+                                   
+                                ? Preparation(recipeModel: recipeModel)
+                                : Container(
+                                    child: Text('Please Visit: '+ recipeModel['sourceUrl'].toString()),
+                                  ),
+                            // Container(
+                            //   child: Text("Nutrition Tab"),
+                            // ),
+                            Nutrients(recipeModel: recipeModel)
                           ],
                         ),
                       )
@@ -172,13 +176,13 @@ class RecipeDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Hero(
-                    tag: recipeModel.imgPath,
+                    tag: recipeModel['image'],
                     child: ClipRRect(
                       child: Image(
                         width: double.infinity,
                         height: (size.height / 2) + 50,
                         fit: BoxFit.cover,
-                        image: AssetImage(recipeModel.imgPath),
+                        image: NetworkImage(recipeModel['image']),
                       ),
                     ),
                   ),
@@ -220,7 +224,7 @@ class Ingredients extends StatelessWidget {
     @required this.recipeModel,
   }) : super(key: key);
 
-  final RecipeModel recipeModel;
+  final recipeModel;
 
   @override
   Widget build(BuildContext context) {
@@ -232,14 +236,114 @@ class Ingredients extends StatelessWidget {
             ListView.separated(
               shrinkWrap: true,
               physics: ScrollPhysics(),
-              itemCount: recipeModel.ingredients.length,
+              itemCount: recipeModel['nutrition']['ingredients'].length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 2.0,
-                  ),
-                  child: Text('⚫️ ' + recipeModel.ingredients[index]),
-                );
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 2.0,
+                    ),
+                    child: Text(
+                      '⚫️ ' +
+                          (recipeModel['nutrition']['ingredients'][index]
+                                      ['amount'] *
+                                  recipeModel['servings'])
+                              .toString() +
+                          ' ' +
+                          recipeModel['nutrition']['ingredients'][index]
+                              ['unit'] +
+                          ' ' +
+                          (recipeModel['nutrition']['ingredients'][index]
+                              ['name']),
+                    ));
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return Divider(color: Colors.black.withOpacity(0.3));
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Nutrients extends StatelessWidget {
+  const Nutrients({
+    Key key,
+    @required this.recipeModel,
+  }) : super(key: key);
+
+  final recipeModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 12.0),
+        child: Column(
+          children: [
+            ListView.separated(
+              shrinkWrap: true,
+              physics: ScrollPhysics(),
+              itemCount: recipeModel['nutrition']['nutrients'].length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 2.0,
+                    ),
+                    child: Text(
+                      '⚫️ ' +
+                          (recipeModel['nutrition']['nutrients'][index]
+                              ['name']) +
+                          ": " +
+                          (recipeModel['nutrition']['nutrients'][index]
+                                  ['amount'])
+                              .toString() +
+                          ' ' +
+                          recipeModel['nutrition']['nutrients'][index]['unit'] +
+                          ' ',
+                    ));
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return Divider(color: Colors.black.withOpacity(0.3));
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Preparation extends StatelessWidget {
+  const Preparation({
+    Key key,
+    @required this.recipeModel,
+  }) : super(key: key);
+
+  final recipeModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 12.0),
+        child: Column(
+          children: [
+            ListView.separated(
+              shrinkWrap: true,
+              physics: ScrollPhysics(),
+              itemCount:
+                  recipeModel['analyzedInstructions'].length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 2.0,
+                    ),
+                    child: Text(
+                      recipeModel['analyzedInstructions'][0]['steps'][0]
+                          ['step'],
+                    ));
               },
               separatorBuilder: (BuildContext context, int index) {
                 return Divider(color: Colors.black.withOpacity(0.3));
