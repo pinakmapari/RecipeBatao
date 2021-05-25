@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_batao/config/palette.dart';
+import '../myKitchen/expiryDetails.dart';
 
 class Recipes {
   const Recipes({this.name, this.imageName});
@@ -42,7 +43,13 @@ class _LatestState extends State<Latest> {
             child: Column(
               children: [
                 FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => IngredientDetails()),
+                    );
+                  },
                   child: Container(
                     decoration: BoxDecoration(),
                     child: Image.asset(

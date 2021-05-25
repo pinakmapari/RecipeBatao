@@ -20,21 +20,22 @@ class _MyProfileState extends State<MyProfile> {
   void initState() {
     //Database().fetchData();
     data = Database.data;
+
+    super.initState();
+  }
+
+  void assignValues() {
     name = data['name'];
     phone = data['phno'];
     age = data['age'];
     email = data['email'];
     //cuisines = data['cuisines'];
     img = data['img'];
-    super.initState();
   }
-
-  void assignValues() {}
 
   @override
   Widget build(BuildContext context) {
     //Database().fetchData();
-    //assignValues();
     //print(Database.data);
     return Scaffold(
       appBar: AppBar(
