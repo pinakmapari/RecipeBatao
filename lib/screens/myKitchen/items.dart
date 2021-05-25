@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_batao/config/palette.dart';
+import 'dart:math';
 
 class Items extends StatelessWidget {
   List<String> names = [
@@ -11,6 +13,17 @@ class Items extends StatelessWidget {
     'Paneer',
     'Upma Mix',
   ];
+  var colors = [
+    Colors.pink,
+    Colors.yellow,
+    Colors.blue,
+    Colors.deepOrange,
+    Colors.cyan,
+    Colors.amber,
+    Colors.redAccent
+  ];
+  final _random = new Random();
+
   List<String> category = ['Fridge', 'Freezer', 'Dry'];
   @override
   Widget build(BuildContext buildContext) {
@@ -27,10 +40,11 @@ class Items extends StatelessWidget {
   }
 
   Widget createCard(String name) {
+    var color = colors[_random.nextInt(colors.length)];
     return Container(
       height: 125,
       child: Card(
-        color: Colors.grey[800],
+        color: DarkTheme.grey1,
         child: Center(
           child: Row(
             children: [
@@ -38,7 +52,7 @@ class Items extends StatelessWidget {
                 width: 15,
               ),
               CircleAvatar(
-                backgroundColor: Colors.amber,
+                backgroundColor: color,
                 radius: 45,
               ),
               SizedBox(
@@ -54,9 +68,9 @@ class Items extends StatelessWidget {
                     Text(
                       name,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: DarkTheme.gold,
                         fontSize: 23,
-                        fontFamily: 'QarmicSans',
+                        fontFamily: 'Bebas',
                       ),
                     ),
                     SizedBox(
@@ -66,9 +80,9 @@ class Items extends StatelessWidget {
                       child: Text(
                         'Expires in x days',
                         style: TextStyle(
-                          color: Colors.red[400],
+                          color: DarkTheme.pink,
                           fontSize: 15,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Bebas',
                         ),
                       ),
                     ),
@@ -87,9 +101,9 @@ class Items extends StatelessWidget {
                     Text(
                       'y kg',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: DarkTheme.white,
                         fontSize: 30,
-                        fontFamily: 'QarmicSans',
+                        fontFamily: 'Bebas',
                       ),
                     ),
                     SizedBox(
@@ -98,10 +112,9 @@ class Items extends StatelessWidget {
                     Text(
                       'Fridge',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: DarkTheme.grey4,
                         fontSize: 25,
-                        fontFamily: 'ALittleSunshine',
-                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Bebas',
                       ),
                     ),
                   ],

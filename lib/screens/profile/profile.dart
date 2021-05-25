@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_batao/screens/profile/profileEdit.dart';
 import 'package:recipe_batao/screens/database.dart';
+import 'package:recipe_batao/config/palette.dart';
 
 class MyProfile extends StatefulWidget {
   @override
@@ -8,42 +9,51 @@ class MyProfile extends StatefulWidget {
 }
 
 class _MyProfileState extends State<MyProfile> {
-  String name = '';
-  String phone = '';
-  String email = '';
-  String age = '';
+  String name = 'ABC';
+  String phone = '12345';
+  String email = 'abc@def.com';
+  String age = '20';
   String img = 'assets/food.jpg';
   List cuisines;
-  Map data = Database.data;
-  void assignValues() {
+  Map data = {};
+  @override
+  void initState() {
+    //Database().fetchData();
+    data = Database.data;
     name = data['name'];
     phone = data['phno'];
     age = data['age'];
     email = data['email'];
     //cuisines = data['cuisines'];
     img = data['img'];
+    super.initState();
   }
+
+  void assignValues() {}
 
   @override
   Widget build(BuildContext context) {
+    //Database().fetchData();
+    //assignValues();
+    //print(Database.data);
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'My Profile',
           style: TextStyle(
-            fontFamily: 'ComingSoon',
+            fontFamily: 'Bebas',
             fontWeight: FontWeight.bold,
-            color: Colors.amber,
+            color: DarkTheme.white,
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.grey[900],
+        backgroundColor: DarkTheme.grey1,
       ),
       body: Container(
         width: double.infinity,
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
-          color: Colors.grey[800],
+          color: DarkTheme.black,
         ),
         child: Padding(
           padding: EdgeInsets.fromLTRB(10.0, 40.0, 40.0, 0.0),
@@ -58,7 +68,7 @@ class _MyProfileState extends State<MyProfile> {
               ),
               Divider(
                 height: 40.0,
-                color: Colors.black,
+                color: DarkTheme.gold,
               ),
               SizedBox(
                 height: 8.0,
@@ -66,9 +76,9 @@ class _MyProfileState extends State<MyProfile> {
               Text(
                 'NAME ',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: DarkTheme.white,
                   letterSpacing: 2.0,
-                  fontFamily: 'ALittleSunshine',
+                  fontFamily: 'Bebas',
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -76,12 +86,12 @@ class _MyProfileState extends State<MyProfile> {
                 height: 8.0,
               ),
               Text(
-                name,
+                'ABC',
                 style: TextStyle(
-                  color: Colors.blue[200],
+                  color: DarkTheme.gold,
                   letterSpacing: 2.0,
                   fontSize: 20.0,
-                  fontFamily: 'CartoonistHand',
+                  fontFamily: 'Bebas',
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -92,14 +102,14 @@ class _MyProfileState extends State<MyProfile> {
                 children: <Widget>[
                   Icon(
                     Icons.email,
-                    color: Colors.red[300],
+                    color: DarkTheme.pink,
                   ),
                   Text(
                     'EMAIL ',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: DarkTheme.white,
                       letterSpacing: 2.0,
-                      fontFamily: 'ALittleSunshine',
+                      fontFamily: 'Bebas',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -111,10 +121,10 @@ class _MyProfileState extends State<MyProfile> {
               Text(
                 email,
                 style: TextStyle(
-                  color: Colors.blue[200],
+                  color: DarkTheme.gold,
                   letterSpacing: 2.0,
                   fontSize: 20.0,
-                  fontFamily: 'CartoonistHand',
+                  fontFamily: 'Bebas',
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -125,14 +135,14 @@ class _MyProfileState extends State<MyProfile> {
                 children: <Widget>[
                   Icon(
                     Icons.phone,
-                    color: Colors.red[300],
+                    color: DarkTheme.pink,
                   ),
                   Text(
                     'PHONE NUMBER ',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: DarkTheme.white,
                       letterSpacing: 2.0,
-                      fontFamily: 'ALittleSunshine',
+                      fontFamily: 'Bebas',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -144,10 +154,10 @@ class _MyProfileState extends State<MyProfile> {
               Text(
                 phone,
                 style: TextStyle(
-                  color: Colors.blue[200],
+                  color: DarkTheme.gold,
                   letterSpacing: 1.0,
                   fontSize: 20.0,
-                  fontFamily: 'CartoonistHand',
+                  fontFamily: 'Bebas',
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -157,9 +167,9 @@ class _MyProfileState extends State<MyProfile> {
               Text(
                 'AGE ',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: DarkTheme.white,
                   letterSpacing: 2.0,
-                  fontFamily: 'ALittleSunshine',
+                  fontFamily: 'Bebas',
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -169,10 +179,10 @@ class _MyProfileState extends State<MyProfile> {
               Text(
                 age,
                 style: TextStyle(
-                  color: Colors.blue[200],
+                  color: DarkTheme.gold,
                   letterSpacing: 2.0,
                   fontSize: 20.0,
-                  fontFamily: 'CartoonistHand',
+                  fontFamily: 'Bebas',
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -184,7 +194,6 @@ class _MyProfileState extends State<MyProfile> {
         onPressed: () {
           setState(() {
             Database().fetchData();
-            print(data);
             data = Database.data;
             //assignValues();
           });
@@ -197,7 +206,7 @@ class _MyProfileState extends State<MyProfile> {
         child: Icon(
           Icons.edit,
         ),
-        backgroundColor: Colors.deepOrange[400],
+        backgroundColor: DarkTheme.grey3,
       ),
     );
   }

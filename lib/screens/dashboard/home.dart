@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_batao/screens/dashboard/body.dart';
+import 'package:recipe_batao/config/palette.dart';
 
 import '../drawer.dart';
 
@@ -25,14 +26,22 @@ class HomeScreen extends StatelessWidget {
         icon: Image.asset("assets/icons/side_menu.png"),
         onPressed: () {},
       ),*/
+      backgroundColor: DarkTheme.grey1,
       title: Padding(
         padding: const EdgeInsets.all(50),
-        child: Image.asset("assets/icons/RecipeBataoIcon.png"),
+        child: Image.asset(
+          "assets/icons/RecipeBataoIcon_Cream.png",
+        ),
       ),
       centerTitle: true,
+      iconTheme: IconThemeData(color: DarkTheme.white),
       actions: [
         IconButton(
-          icon: Image.asset("assets/icons/search_icon.png"),
+          icon: Icon(
+            Icons.search,
+            color: DarkTheme.white,
+            size: 32,
+          ),
           onPressed: () {},
         ),
         SizedBox(

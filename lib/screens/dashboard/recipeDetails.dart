@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_batao/config/palette.dart';
 
 class Recipes {
   const Recipes({this.name, this.imageName});
@@ -43,23 +44,23 @@ class _LatestState extends State<Latest> {
                 FlatButton(
                   onPressed: () {},
                   child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                      ),
-                    ),
+                    decoration: BoxDecoration(),
                     child: Image.asset(
                       "assets/images/${recipeList[index].imageName}.jpg",
                       height: 170,
                     ),
                   ),
                 ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
                 Text(
                   '${recipeList[index].name}',
                   style: TextStyle(
                     letterSpacing: 1,
                     fontSize: 16,
+                    fontFamily: 'Bebas',
+                    color: DarkTheme.grey7,
                   ),
                 ),
               ],
