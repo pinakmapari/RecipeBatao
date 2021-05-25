@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_batao/config/palette.dart';
 
 class Categories extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 35,
+      height: 35,
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
@@ -36,16 +37,17 @@ class _CategoriesState extends State<Categories> {
           vertical: 5,
         ),
         decoration: BoxDecoration(
-          color: selectedIndex == index ? Colors.purple[100] : Colors.transparent,
+          color: selectedIndex == index ? DarkTheme.white : Colors.transparent,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Text(
-            categories[index],
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: selectedIndex == index ? Colors.purple[700] : Colors.grey,
-            ),
+          categories[index],
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: selectedIndex == index ? DarkTheme.pink : DarkTheme.gold,
+            fontFamily: 'Bebas',
           ),
+        ),
       ),
     );
   }

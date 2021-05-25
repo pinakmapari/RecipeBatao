@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_batao/config/palette.dart';
 import '../myKitchen/expiryDetails.dart';
 
 class Recipes {
@@ -45,27 +46,28 @@ class _LatestState extends State<Latest> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => IngredientDetails()),
+                      MaterialPageRoute(
+                          builder: (context) => IngredientDetails()),
                     );
                   },
                   child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                      ),
-                    ),
+                    decoration: BoxDecoration(),
                     child: Image.asset(
                       "assets/images/${recipeList[index].imageName}.jpg",
                       height: 170,
                     ),
                   ),
                 ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
                 Text(
                   '${recipeList[index].name}',
                   style: TextStyle(
                     letterSpacing: 1,
                     fontSize: 16,
+                    fontFamily: 'Bebas',
+                    color: DarkTheme.grey7,
                   ),
                 ),
               ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+import 'package:recipe_batao/config/palette.dart';
 import 'package:recipe_batao/screens/database.dart';
 
 //import 'package:recipe_batao/screens/database.dart';
@@ -47,18 +47,18 @@ class _EditPictureState extends State<EditPicture> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: DarkTheme.grey1,
         title: Text(
           'Edit Profile Picture',
           style: TextStyle(
-            color: Colors.amber,
-            fontFamily: 'ComingSoon',
+            color: DarkTheme.white,
+            fontFamily: 'Decour',
           ),
         ),
         centerTitle: true,
       ),
       body: Container(
-        color: Colors.grey[800],
+        color: DarkTheme.black,
         child: Column(
           children: <Widget>[
             Padding(
@@ -72,7 +72,10 @@ class _EditPictureState extends State<EditPicture> {
             ),
             Divider(
               height: 20.0,
-              thickness: 2.0,
+              endIndent: 20,
+              indent: 20,
+              thickness: 1.0,
+              color: DarkTheme.grey6,
             ),
             Expanded(
                 child: GridView.count(
@@ -109,10 +112,11 @@ class _EditPictureState extends State<EditPicture> {
                 Database().addImage(img);
                 Navigator.pop(context);
               },
+              color: DarkTheme.grey1,
               child: Text(
                 'Save',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: DarkTheme.gold,
                 ),
               ),
             )

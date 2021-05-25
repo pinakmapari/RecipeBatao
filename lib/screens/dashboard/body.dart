@@ -4,32 +4,40 @@ import 'package:recipe_batao/screens/dashboard/recipesGrid.dart';
 import '../auth/auth.dart';
 import 'package:recipe_batao/screens/dashboard/recipeDetails.dart';
 import 'package:recipe_batao/screens/dashboard/categories.dart';
+import 'package:recipe_batao/config/palette.dart';
 
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple[50],
+      backgroundColor: DarkTheme.black,
       body: Column(
         //mainAxisAlignment: MainAxisAlignment.start,
         //crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(
+            height: 10,
+          ),
           Text(
             'Hello Mrunmai!',
             style: TextStyle(
               fontSize: 35,
               fontWeight: FontWeight.bold,
               letterSpacing: 2,
+              fontFamily: 'Bebas',
+              color: DarkTheme.gold,
             ),
           ),
           SizedBox(
-            height: 15,
+            height: 10,
           ),
           Text(
             'What would you like to eat today?',
             style: TextStyle(
               fontSize: 23,
               fontStyle: FontStyle.italic,
+              fontFamily: 'Bebas',
+              color: DarkTheme.grey5,
               //letterSpacing: 2,
             ),
           ),
@@ -37,7 +45,7 @@ class Body extends StatelessWidget {
             height: 10,
           ),
           Divider(
-            color: Colors.black,
+            color: DarkTheme.grey3,
             thickness: 3,
             indent: 17,
             endIndent: 17,
@@ -53,9 +61,10 @@ class Body extends StatelessWidget {
               Text(
                 'Latest Recipes:',
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Bebas',
+                    color: DarkTheme.pink),
                 textAlign: TextAlign.left,
               ),
             ],
@@ -66,14 +75,14 @@ class Body extends StatelessWidget {
           Latest(),
           //SizedBox(height: 10,),
           Divider(
-            color: Colors.black,
+            color: Theme3.purple,
             thickness: 1,
             indent: 17,
             endIndent: 17,
           ),
           Categories(),
           Divider(
-            color: Colors.black,
+            color: Theme3.purple,
             thickness: 1,
             indent: 17,
             endIndent: 17,
