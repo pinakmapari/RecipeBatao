@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         //   authenticated: HomeScreen(),
         //   unauthenticated: AuthScreen(),
         // ),
-        home: NewRecipe(),
+        home: SplashScreen(),
       ),
     );
   }
