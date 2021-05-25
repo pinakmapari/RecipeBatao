@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../myKitchen/expiryDetails.dart';
 
 class Recipes {
   const Recipes({this.name, this.imageName});
@@ -41,7 +42,12 @@ class _LatestState extends State<Latest> {
             child: Column(
               children: [
                 FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => IngredientDetails()),
+                    );
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(
