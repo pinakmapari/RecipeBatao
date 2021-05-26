@@ -153,4 +153,16 @@ class Items extends StatelessWidget {
       return Text('These are your items');
     });
   }
+
+  void sortData(List itemDet) {
+    for (Map singleItem in itemDet) {
+      String expDate = singleItem['date'];
+      List dlist = expDate.split('/');
+      String y = dlist[2];
+      String d = dlist[0];
+      String m = dlist[1];
+      var edate = DateTime(int.parse(y), int.parse(m), int.parse(d));
+      var date = curdate.difference(edate);
+    }
+  }
 }
