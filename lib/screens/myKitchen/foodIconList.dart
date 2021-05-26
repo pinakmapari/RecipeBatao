@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../dashboard/recipeDetails.dart';
+import 'package:recipe_batao/config/palette.dart';
 
 class FoodList extends StatefulWidget {
   @override
@@ -7,6 +8,7 @@ class FoodList extends StatefulWidget {
 }
 
 class _FoodListState extends State<FoodList> {
+  List<dynamic> recipeList = new List();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,12 +23,14 @@ class _FoodListState extends State<FoodList> {
                 child: Column(
                   children: [
                       RaisedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                         
+                        },
                         shape: CircleBorder(),
                         child: Container(
-                          //child: Image.asset("assets/images/${recipeList[index].imageName}.jpg"),
                           child: CircleAvatar(
-                            backgroundImage: AssetImage("assets/images/${recipeList[index].imageName}.jpg"),
+
+                            backgroundImage: NetworkImage("${recipeList[index]['image']}"),
                             radius: 45,
                           ),
                         ),
@@ -36,6 +40,8 @@ class _FoodListState extends State<FoodList> {
                       'Ingredient\n        ${index+1}',
                       style: TextStyle(
                         fontSize: 16,
+                        fontFamily: 'Bebas',
+                        color: DarkTheme.grey5,
                       ),
                     ),
                   ],

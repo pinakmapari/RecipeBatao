@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_batao/config/palette.dart';
+import 'package:recipe_batao/screens/dashboard/recipesGrid.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class Categories extends StatefulWidget {
   @override
@@ -12,40 +14,98 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 35,
-      child: ListView.builder(
-        physics: BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (context, index) => buildCategories(index),
-      ),
-    );
-  }
-
-  Widget buildCategories(int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedIndex = index;
-        });
-      },
-      child: Container(
-        alignment: Alignment.center,
-        margin: EdgeInsets.only(left: 20),
-        padding: EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 5,
-        ),
-        decoration: BoxDecoration(
-          color: selectedIndex == index ? DarkTheme.white : Colors.transparent,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Text(
-          categories[index],
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: selectedIndex == index ? DarkTheme.pink : DarkTheme.gold,
-            fontFamily: 'Bebas',
+      child: Expanded(
+        child: DefaultTabController(
+          length: 5,
+          initialIndex: 0,
+          child: Column(
+            children: [
+              TabBar(
+                isScrollable: true,
+                indicatorColor: Colors.red,
+                tabs: [
+                  Tab(
+                    child: Text(
+                      "Breakfast".toUpperCase(),
+                      style: TextStyle(
+                        fontFamily: 'Bebas',
+                        letterSpacing: 2,
+                        color: DarkTheme.gold,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      "Main Course".toUpperCase(),
+                      style: TextStyle(
+                        fontFamily: 'Bebas',
+                        letterSpacing: 2,
+                        color: DarkTheme.gold,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      "Snacks".toUpperCase(),
+                      style: TextStyle(
+                        fontFamily: 'Bebas',
+                        letterSpacing: 2,
+                        color: DarkTheme.gold,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      "Beverage".toUpperCase(),
+                      style: TextStyle(
+                        fontFamily: 'Bebas',
+                        letterSpacing: 2,
+                        color: DarkTheme.gold,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      "Desserts".toUpperCase(),
+                      style: TextStyle(
+                        fontFamily: 'Bebas',
+                        letterSpacing: 2,
+                        color: DarkTheme.gold,
+                      ),
+                    ),
+                  ),
+                ],
+                labelColor: Colors.black,
+                indicator: DotIndicator(
+                  color: DarkTheme.gold,
+                  distanceFromCenter: 16,
+                  radius: 3,
+                  paintingStyle: PaintingStyle.fill,
+                ),
+                unselectedLabelColor: Colors.black.withOpacity(0.3),
+                labelStyle: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                ),
+                labelPadding: EdgeInsets.symmetric(
+                  horizontal: 32,
+                ),
+              ),
+              Divider(
+                color: Colors.black.withOpacity(0.3),
+              ),
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    RecipesGridView(mealtype: 'breakfast'),
+                    RecipesGridView(mealtype: 'main course'),
+                    RecipesGridView(mealtype: 'snacks'),
+                    RecipesGridView(mealtype: 'beverage'),
+                    RecipesGridView(mealtype: 'desserts'),
+                  ],
+                ),
+              )
+            ],
           ),
         ),
       ),

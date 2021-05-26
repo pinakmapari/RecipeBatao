@@ -1,18 +1,15 @@
 import 'dart:convert';
-import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:provider/provider.dart';
 import 'package:recipe_batao/services/api_services.dart';
-//import 'dart:convert' as convert;
 import 'package:http/http.dart';
 import 'package:recipe_batao/screens/recipe/recipedetails.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 
 class ExplorePage extends StatefulWidget {
+  final String query;
+
+  ExplorePage({@required this.query});
   @override
   _ExplorePageState createState() => _ExplorePageState();
 }
@@ -22,51 +19,16 @@ class _ExplorePageState extends State<ExplorePage> {
 
   void getRecipes() async {
     Response response = await get(
-        'https://api.spoonacular.com/recipes/complexSearch?includeIngredients=tomato,+cheese&addRecipeNutrition=true&addRecipeInformation=true&apiKey=${ApiService.API_KEY}');
+        'https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${widget.query}&addRecipeNutrition=true&addRecipeInformation=true&apiKey=${ApiService.API_KEY}');
 
-    //print(response.body);
     final data = json.decode(response.body);
-    //print(data);
-    //print(data["results"]);
+
     _recipes = data["results"];
-    //print(data["results"][0]["title"]);
 
     setState(() {
       _recipes = data["results"] as List;
     });
-    //print(_recipes[0]['id']);
-    // print(_recipes);
-    //Recipes recipeslist = Recipes.fromMap(data);
-    //print(recipeslist);
-    //return recipeslist;
-    //return Recipes.fromMap(data[0]);
   }
-  //   // setState(() {
-  //   //   _recipes = data as List;
-  //   // });
-  //   // print(_recipes);
-  //   //Recipes recipeslist = Recipes.fromMap(data);
-  //   //print(recipeslist);
-  //   //return recipeslist;
-  //   //return Recipes.fromMap(data[0]);
-  // }
-
-  // Future<Recipes> getRecipes() async {
-  //   Response response = await get(
-  //       'https://api.spoonacular.com/recipes/complexSearch?includeIngredients=tomato,+cheese&addRecipeNutrition=true&addRecipeInformation=true&apiKey=${ApiService.API_KEY}');
-  //   Map<String, dynamic> map = json.decode(response.body);
-  //   List<dynamic> data = map["results"];
-  //   Recipes recipes = Recipes.fromMap(map);
-  //   print(data[0]);
-  //   setState(() {
-  //     _recipes = data as List;
-  //   });
-  //   return recipes;
-  //Recipes recipeslist = Recipes.fromMap(data);
-  //print(recipeslist);
-  //return recipeslist;
-  //return Recipes.fromMap(data[0]);
-  // }
 
   @override
   void initState() {
@@ -76,17 +38,6 @@ class _ExplorePageState extends State<ExplorePage> {
 
   @override
   Widget build(BuildContext context) {
-    //   return Container(
-    //     child: ListView(children: [
-    //       //Text('${title}'),
-    //       Text('${_recipes[0]['id']}'),
-    //       Text('${_recipes[0]['image']}'),
-    //       Text('${_recipes[0]['sourceUrl']}'),
-    //       Text('${_recipes[0]['nutrition']}'),
-    //     ]),
-    //   );
-    // }
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -248,4 +199,3 @@ class _RecipeCardState extends State<RecipeCard> {
     );
   }
 }
-

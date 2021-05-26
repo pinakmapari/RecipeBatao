@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
-
 import 'package:recipe_batao/screens/auth/provider_button.dart';
 import 'package:recipe_batao/screens/auth/sign_in_up_bar.dart';
-
 import 'decoration_function.dart';
 import 'title.dart';
 

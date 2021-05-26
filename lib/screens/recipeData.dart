@@ -5,8 +5,10 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'recipe/recipedetails.dart';
+
 class RecipeDetails extends StatelessWidget {
-  final recipeModel;
+  final recipeModel; //==recipelist[index]
   RecipeDetails({
     @required this.recipeModel,
   });
@@ -22,6 +24,7 @@ class RecipeDetails extends StatelessWidget {
       throw 'Could not launch $url';
     }
   }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -159,96 +162,101 @@ class RecipeDetails extends StatelessWidget {
                       Expanded(
                         child: TabBarView(
                           children: [
-                            Ingredients(recipeModel: recipeModel),
+                            // Container(
+                            //   child: Text("Ingredients Tab"),
+                            // ),
+                            Ingredients(
+                                recipeModel:
+                                    recipeModel['extendedIngredients']),
 
                             recipeModel['analyzedInstructions'].isEmpty == false
-                                   
-                                ? Preparation(recipeModel: recipeModel):
-                                // : Container(
-                                //     child: Text('Please Visit: '+ recipeModel['sourceUrl'].toString()),
-                                //   ),
-                                ElevatedButton(
-                onPressed: () => setState((){
-                                  _launched = _launchInBrowser(recipeModel['sourceUrl'].toString());
-                                }),
-                                child: const Text('Launch in browser'),
-                              ),
-                                            // Container(
-                                            //   child: Text("Nutrition Tab"),
-                                            // ),
-                                            Nutrients(recipeModel: recipeModel)
-                                          ],
-                                        ),
-                                      )
-                                    ],
+                                ? //Preparation(recipeModel: recipeModel):
+                                Container(
+                                    child: Text('Please Visit: ' +
+                                        recipeModel['sourceUrl'].toString()),
+                                  )
+                                : FlatButton(
+                                    onPressed: () => setState(() {
+                                      _launched = _launchInBrowser(
+                                          recipeModel['sourceUrl'].toString());
+                                    }),
+                                    child: const Text('Launch in browser'),
                                   ),
-                                ),
-                              ),
-                            ],
-                          ),
+                            Container(
+                              child: Text("Nutrition Tab"),
+                            ),
+                            //Nutrients(recipeModel: recipeModel)
+                          ],
                         ),
-                        body: SingleChildScrollView(
-                          child: Stack(
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  Hero(
-                                    tag: recipeModel['image'],
-                                    child: ClipRRect(
-                                      child: Image(
-                                        width: double.infinity,
-                                        height: (size.height / 2) + 50,
-                                        fit: BoxFit.cover,
-                                        image: NetworkImage(recipeModel['image']),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Positioned(
-                                top: 40,
-                                right: 20,
-                                child: Icon(
-                                  FlutterIcons.bookmark_outline_mco,
-                                  color: Colors.white,
-                                  size: 38,
-                                ),
-                              ),
-                              Positioned(
-                                top: 40,
-                                left: 20,
-                                child: InkWell(
-                                  onTap: () => Navigator.pop(context),
-                                  child: Icon(
-                                    CupertinoIcons.back,
-                                    color: Colors.white,
-                                    size: 38,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Hero(
+                    tag: recipeModel['image'],
+                    child: ClipRRect(
+                      child: Image(
+                        width: double.infinity,
+                        height: (size.height / 2) + 50,
+                        fit: BoxFit.cover,
+                        image: NetworkImage(recipeModel['image']),
                       ),
-                      floatingActionButton: FloatingActionButton.extended(
-                        onPressed: () {
-                          openYoutbe();
-                        },
-                        elevation: 10,
-                        label: Text('Watch Video'),
-                      ),
-                      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-                      // This trailing comma makes auto-formatting nicer for build methods.
-                    );
-                  }
-                  openYoutbe() {
-                  String url1 = "https:youtube.com/results?search_query=" + recipeModel['title'];
-                  launch(url1);
-                }
-                }
-                
-                setState(Null Function() param0) {
+                    ),
+                  ),
+                ],
+              ),
+              Positioned(
+                top: 40,
+                right: 20,
+                child: Icon(
+                  FlutterIcons.bookmark_outline_mco,
+                  color: Colors.white,
+                  size: 38,
+                ),
+              ),
+              Positioned(
+                top: 40,
+                left: 20,
+                child: InkWell(
+                  onTap: () => Navigator.pop(context),
+                  child: Icon(
+                    CupertinoIcons.back,
+                    color: Colors.white,
+                    size: 38,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          openYoutbe();
+        },
+        elevation: 10,
+        label: Text('Watch Video'),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  openYoutbe() {
+    String url1 =
+        "https:youtube.com/results?search_query=" + recipeModel['title'];
+    launch(url1);
+  }
 }
 
 class Ingredients extends StatelessWidget {
@@ -257,7 +265,7 @@ class Ingredients extends StatelessWidget {
     @required this.recipeModel,
   }) : super(key: key);
 
-  final recipeModel; 
+  final recipeModel;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -268,7 +276,7 @@ class Ingredients extends StatelessWidget {
             ListView.separated(
               shrinkWrap: true,
               physics: ScrollPhysics(),
-              itemCount: recipeModel['nutrition']['ingredients'].length,
+              itemCount: recipeModel.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                     padding: const EdgeInsets.symmetric(
@@ -276,16 +284,12 @@ class Ingredients extends StatelessWidget {
                     ),
                     child: Text(
                       '⚫️ ' +
-                          (recipeModel['nutrition']['ingredients'][index]
-                                      ['amount'] *
-                                  recipeModel['servings'])
+                          (recipeModel[index]['amount'] )
                               .toString() +
                           ' ' +
-                          recipeModel['nutrition']['ingredients'][index]
-                              ['unit'] +
+                          recipeModel[index]['unit'] +
                           ' ' +
-                          (recipeModel['nutrition']['ingredients'][index]
-                              ['name']),
+                          (recipeModel[index]['name']),
                     ));
               },
               separatorBuilder: (BuildContext context, int index) {
@@ -317,7 +321,7 @@ class Nutrients extends StatelessWidget {
             ListView.separated(
               shrinkWrap: true,
               physics: ScrollPhysics(),
-              itemCount: recipeModel['nutrition']['nutrients'].length,
+              itemCount: recipeModel.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                     padding: const EdgeInsets.symmetric(
@@ -325,14 +329,11 @@ class Nutrients extends StatelessWidget {
                     ),
                     child: Text(
                       '⚫️ ' +
-                          (recipeModel['nutrition']['nutrients'][index]
-                              ['name']) +
+                          (recipeModel[index]['name']) +
                           ": " +
-                          (recipeModel['nutrition']['nutrients'][index]
-                                  ['amount'])
-                              .toString() +
+                          (recipeModel[index]['amount']).toString() +
                           ' ' +
-                          recipeModel['nutrition']['nutrients'][index]['unit'] +
+                          recipeModel[index]['unit'] +
                           ' ',
                     ));
               },
@@ -365,8 +366,7 @@ class Preparation extends StatelessWidget {
             ListView.separated(
               shrinkWrap: true,
               physics: ScrollPhysics(),
-              itemCount:
-                  recipeModel['analyzedInstructions'].length,
+              itemCount: recipeModel['analyzedInstructions'].length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                     padding: const EdgeInsets.symmetric(

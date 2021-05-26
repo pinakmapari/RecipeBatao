@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -33,14 +33,13 @@ dependencies:
   sliding_up_panel: ^1.0.2
   tab_indicator_styler: ^1.0.0
 
-
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   # firebase_core: ^0.7.0
   #firebase_auth: ^0.15.0
   cloud_firestore: ^0.12.9+4
+  url_launcher: ^5.6.0
 
 dev_dependencies:
   flutter_test:
@@ -51,7 +50,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -59,9 +57,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-  - assets/images/
-  - assets/icons/
-  - assets/
+    - assets/images/
+    - assets/icons/
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -75,9 +73,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-      - family: Bebas
-        fonts:
-          - asset: assets/fonts/Bebas_Neue/BebasNeue-Regular.ttf
-      
+    - family: Bebas
+      fonts:
+        - asset: assets/fonts/Bebas_Neue/BebasNeue-Regular.ttf
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

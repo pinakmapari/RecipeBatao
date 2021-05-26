@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:recipe_batao/screens/dashboard/recipesGrid.dart';
-import '../auth/auth.dart';
 import 'package:recipe_batao/screens/dashboard/recipeDetails.dart';
 import 'package:recipe_batao/screens/dashboard/categories.dart';
 import 'package:recipe_batao/config/palette.dart';
@@ -19,7 +17,7 @@ class Body extends StatelessWidget {
             height: 10,
           ),
           Text(
-            'Hello Mrunmai!',
+            'Hello {name}!',
             style: TextStyle(
               fontSize: 35,
               fontWeight: FontWeight.bold,
@@ -35,7 +33,7 @@ class Body extends StatelessWidget {
             'What would you like to eat today?',
             style: TextStyle(
               fontSize: 23,
-              fontStyle: FontStyle.italic,
+              fontStyle: FontStyle.normal,
               fontFamily: 'Bebas',
               color: DarkTheme.grey5,
               //letterSpacing: 2,
@@ -80,7 +78,7 @@ class Body extends StatelessWidget {
             indent: 17,
             endIndent: 17,
           ),
-          Categories(),
+          Categories(), //change this while doing tab bar setup
           Divider(
             color: Theme3.purple,
             thickness: 1,
@@ -88,7 +86,7 @@ class Body extends StatelessWidget {
             endIndent: 17,
           ),
           //SizedBox(height: 10,),
-          RecipesGridView(),
+          //RecipesGridView(mealtype: 'breakfast'),
           //SizedBox(height: 10,),
           SizedBox(
             height: 5,
