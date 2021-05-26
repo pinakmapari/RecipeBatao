@@ -4,6 +4,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:recipe_batao/model/recipemodel.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RecipeDetails extends StatelessWidget {
   final RecipeModel recipeModel;
@@ -209,9 +210,21 @@ class RecipeDetails extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          openYoutbe();
+        },
+        elevation: 10,
+        label: Text('Watch Video'),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+  openYoutbe() {
+  String url1 = "https:youtube.com/results?search_query=" + recipeModel.title;
+  launch(url1);
+}
 }
 
 class Ingredients extends StatelessWidget {
@@ -251,3 +264,5 @@ class Ingredients extends StatelessWidget {
     );
   }
 }
+
+

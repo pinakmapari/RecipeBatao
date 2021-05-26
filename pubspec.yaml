@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -33,14 +33,13 @@ dependencies:
   sliding_up_panel: ^1.0.2
   tab_indicator_styler: ^1.0.0
 
-
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   # firebase_core: ^0.7.0
   #firebase_auth: ^0.15.0
   cloud_firestore: ^0.12.9+4
+  url_launcher: ^5.6.0
 
 dev_dependencies:
   flutter_test:
@@ -51,7 +50,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -59,9 +57,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-  - assets/images/
-  - assets/icons/
-  - assets/
+    - assets/images/
+    - assets/icons/
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -75,66 +73,66 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-      - family: AllThingsPink
-        fonts:
-          - asset: assets/fonts/allthingspink.ttf
-      - family: ALittleSunshine
-        fonts:
-          - asset: assets/fonts/alittlesunshine.ttf
-      - family: AlwaysInMyHeart
-        fonts:
-          - asset: assets/fonts/alwaysinmyheart.ttf
-      - family: BehindBlueEyes
-        fonts:
-          - asset: assets/fonts/behindblueeyes.ttf
-      - family: CartoonistHand
-        fonts:
-          - asset: assets/fonts/cartoonisthand.ttf
-      - family: Cathsgbr
-        fonts:
-          - asset: assets/fonts/cathsgbr.TTF
-      - family: ChocolateCoveredRainDrops
-        fonts:
-          - asset: assets/fonts/chocolatecoveredraindrops.ttf
-      - family: ClarksonDemo
-        fonts:
-          - asset: assets/fonts/clarksondemo.ttf
-      - family: Comingsoon
-        fonts:
-          - asset: assets/fonts/comingsoon.ttf
-      - family: FallIsComing
-        fonts:
-          - asset: assets/fonts/falliscoming.ttf
-      - family: HiddenMeanings
-        fonts:
-          - asset: assets/fonts/hiddenmeanings.ttf
-      - family: Lumos
-        fonts:
-          - asset: assets/fonts/lumos.TTF
-      - family: MyFirstCrush
-        fonts:
-          - asset: assets/fonts/myfirstcrush.ttf
-      - family: OpenSans
-        fonts:
-          - asset: assets/fonts/opensanscondensed_light.ttf
-      - family: Porkh
-        fonts:
-          - asset: assets/fonts/porkh.TTF
-      - family: Porkys
-        fonts:
-          - asset: assets/fonts/porkys.TTF
-      - family: QarmicSans
-        fonts:
-          - asset: assets/fonts/qarmicsansabridged.ttf
-      - family: RobotoMono
-        fonts:
-          - asset: assets/fonts/robotomono.ttf
-      - family: SensibleArmadillo
-        fonts:
-          - asset: assets/fonts/sensiblearmadillo.ttf
-      - family: WaysToSayGoodBye
-        fonts:
-          - asset: assets/fonts/waystosaygoodbye.ttf
+    - family: AllThingsPink
+      fonts:
+        - asset: assets/fonts/allthingspink.ttf
+    - family: ALittleSunshine
+      fonts:
+        - asset: assets/fonts/alittlesunshine.ttf
+    - family: AlwaysInMyHeart
+      fonts:
+        - asset: assets/fonts/alwaysinmyheart.ttf
+    - family: BehindBlueEyes
+      fonts:
+        - asset: assets/fonts/behindblueeyes.ttf
+    - family: CartoonistHand
+      fonts:
+        - asset: assets/fonts/cartoonisthand.ttf
+    - family: Cathsgbr
+      fonts:
+        - asset: assets/fonts/cathsgbr.TTF
+    - family: ChocolateCoveredRainDrops
+      fonts:
+        - asset: assets/fonts/chocolatecoveredraindrops.ttf
+    - family: ClarksonDemo
+      fonts:
+        - asset: assets/fonts/clarksondemo.ttf
+    - family: Comingsoon
+      fonts:
+        - asset: assets/fonts/comingsoon.ttf
+    - family: FallIsComing
+      fonts:
+        - asset: assets/fonts/falliscoming.ttf
+    - family: HiddenMeanings
+      fonts:
+        - asset: assets/fonts/hiddenmeanings.ttf
+    - family: Lumos
+      fonts:
+        - asset: assets/fonts/lumos.TTF
+    - family: MyFirstCrush
+      fonts:
+        - asset: assets/fonts/myfirstcrush.ttf
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/opensanscondensed_light.ttf
+    - family: Porkh
+      fonts:
+        - asset: assets/fonts/porkh.TTF
+    - family: Porkys
+      fonts:
+        - asset: assets/fonts/porkys.TTF
+    - family: QarmicSans
+      fonts:
+        - asset: assets/fonts/qarmicsansabridged.ttf
+    - family: RobotoMono
+      fonts:
+        - asset: assets/fonts/robotomono.ttf
+    - family: SensibleArmadillo
+      fonts:
+        - asset: assets/fonts/sensiblearmadillo.ttf
+    - family: WaysToSayGoodBye
+      fonts:
+        - asset: assets/fonts/waystosaygoodbye.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Material App',
         theme: ThemeData(
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-            textTheme: GoogleFonts.muliTextTheme(),
-            accentColor: Palette.darkBlue,
-            appBarTheme: AppBarTheme(color: Colors.cyan[100], elevation: 3),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          textTheme: GoogleFonts.muliTextTheme(),
+          accentColor: Palette.darkBlue,
+          appBarTheme: AppBarTheme(color: Colors.cyan[100], elevation: 3),
         ),
         // home: LitAuthState(
         //   authenticated: HomeScreen(),
