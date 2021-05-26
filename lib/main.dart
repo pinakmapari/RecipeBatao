@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:recipe_batao/screens/splash.dart';
 import 'config/palette.dart';
+import 'package:recipe_batao/screens/myKitchen/expiryDetails.dart';
 
 void main() => runApp(MyApp());
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'foodIconList.dart';
+import 'package:recipe_batao/config/palette.dart';
 
 class IngredientDetails extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class _IngredientDetailsState extends State<IngredientDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent[100],
+        backgroundColor: DarkTheme.black,
         actions: [
           IconButton(
               icon: Icon(Icons.delete),
@@ -29,7 +30,7 @@ class _IngredientDetailsState extends State<IngredientDetails> {
           ),
         ],
       ),
-      backgroundColor: Colors.cyanAccent[50],
+      backgroundColor: DarkTheme.black,
       body: Column(
         children: [
           SizedBox(
@@ -43,9 +44,11 @@ class _IngredientDetailsState extends State<IngredientDetails> {
               Text(
                 '$ingredient',
                 style: TextStyle(
-                  fontSize: 35,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
+                  fontFamily: 'Bebas',
+                  color: DarkTheme.gold,
                 ),
                 textAlign: TextAlign.left,
               ),
@@ -62,9 +65,11 @@ class _IngredientDetailsState extends State<IngredientDetails> {
               Text(
                 '$category',
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 30,
                   fontWeight: FontWeight.normal,
                   letterSpacing: 1,
+                  fontFamily: 'Bebas',
+                  color: DarkTheme.grey5,
                 ),
                 textAlign: TextAlign.left,
               ),
@@ -77,14 +82,16 @@ class _IngredientDetailsState extends State<IngredientDetails> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                height: 130,
+                height: 150,
                 child: Column(
                   children: [
                     Text(
                       'In the kitchen\nsince',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 22,
                         fontWeight: FontWeight.normal,
+                        fontFamily: 'Bebas',
+                        color: DarkTheme.pink,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -94,8 +101,10 @@ class _IngredientDetailsState extends State<IngredientDetails> {
                     Text(
                       '$kitchenSince\ndays',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 35,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Bebas',
+                        color: DarkTheme.grey5,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -103,21 +112,23 @@ class _IngredientDetailsState extends State<IngredientDetails> {
                 ),
               ),
               Container(
-                height: 130,
+                height: 150,
                 child: VerticalDivider(
-                  color: Colors.black,
-                  thickness: 1,
+                  color: Theme3.purple,
+                  thickness: 2,
                 ),
               ),
               Container(
-                height: 130,
+                height: 150,
                 child: Column(
                   children: [
                     Text(
                       'Expiring\nin',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 22,
                         fontWeight: FontWeight.normal,
+                        fontFamily: 'Bebas',
+                        color: DarkTheme.pink,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -127,8 +138,10 @@ class _IngredientDetailsState extends State<IngredientDetails> {
                     Text(
                       '$expiringIn\ndays',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 35,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Bebas',
+                        color: DarkTheme.grey5,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -136,21 +149,23 @@ class _IngredientDetailsState extends State<IngredientDetails> {
                 ),
               ),
               Container(
-                height: 130,
+                height: 150,
                 child: VerticalDivider(
-                  color: Colors.black,
-                  thickness: 1,
+                  color: Theme3.purple,
+                  thickness: 2,
                 ),
               ),
               Container(
-                height: 130,
+                height: 150,
                 child: Column(
                   children: [
                     Text(
                       'Amount\n',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 22,
                         fontWeight: FontWeight.normal,
+                        fontFamily: 'Bebas',
+                        color: DarkTheme.pink,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -160,8 +175,10 @@ class _IngredientDetailsState extends State<IngredientDetails> {
                     Text(
                       '$amount\ngm',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 35,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Bebas',
+                        color: DarkTheme.grey5,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -174,7 +191,7 @@ class _IngredientDetailsState extends State<IngredientDetails> {
             height: 13,
           ),
           Divider(
-            color: Colors.black,
+            color: Theme3.purple,
             thickness: 2,
             indent: 17,
             endIndent: 17,
@@ -187,6 +204,9 @@ class _IngredientDetailsState extends State<IngredientDetails> {
             style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
+              letterSpacing: 1,
+              fontFamily: 'Bebas',
+              color: DarkTheme.pink,
             ),
           ),
           SizedBox(
@@ -194,7 +214,7 @@ class _IngredientDetailsState extends State<IngredientDetails> {
           ),
           FoodList(),
           Divider(
-            color: Colors.black,
+            color: Theme3.purple,
             thickness: 2,
             indent: 17,
             endIndent: 17,
