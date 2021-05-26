@@ -14,6 +14,11 @@ class _AddItemState extends State<AddItem> {
   String location = 'Fridge';
   int itemQty;
   int date = 01, month = 01, year = 2021;
+  var color;
+  @override
+  void initState() {
+    color = generate();
+  }
 
   var colors = [
     Colors.pink,
@@ -65,8 +70,9 @@ class _AddItemState extends State<AddItem> {
   List<String> locs = ['Fridge', 'Freezer', 'Dry'];
   @override
   Widget build(BuildContext buildContext) {
-    var color = generate();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomPadding: false,
       backgroundColor: DarkTheme.black,
       appBar: AppBar(
         backgroundColor: DarkTheme.grey1,
@@ -90,6 +96,9 @@ class _AddItemState extends State<AddItem> {
               CircleAvatar(
                 backgroundColor: color,
                 radius: 45,
+              ),
+              Divider(
+                height: 20,
               ),
               Row(
                 children: [
@@ -336,13 +345,16 @@ class _AddItemState extends State<AddItem> {
               RaisedButton(
                 color: DarkTheme.grey2,
                 onPressed: () {
-                  String fdate =
-                      date.toString() + month.toString() + year.toString();
+                  String fdate = date.toString() +
+                      '/' +
+                      month.toString() +
+                      '/' +
+                      year.toString();
                   String fqty = itemQty.toString() + quantifier;
                   String c = color.toString();
                   Database().addItem(itemName, fdate, fqty, location, c);
-                  Database().fetchItems();
-                  print(Database.itemData);
+                  //Database().fetchItems();
+                  //print(Database.itemData);
                   Navigator.pop(context);
                 },
                 child: Text(

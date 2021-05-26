@@ -41,6 +41,8 @@ class _MyKitchenState extends State<MyKitchen> {
         ],
       ),
       body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: double.infinity,
         color: DarkTheme.black,
         child: Column(
           children: <Widget>[

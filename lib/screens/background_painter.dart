@@ -10,13 +10,13 @@ import 'package:recipe_batao/config/palette.dart';
 class BackgroundPainter extends CustomPainter {
   BackgroundPainter({Animation<double> animation})
       : bluePaint = Paint()
-          ..color = Palette.lightBlue
+          ..color = DarkTheme.grey4
           ..style = PaintingStyle.fill,
         greyPaint = Paint()
-          ..color = Palette.darkBlue
+          ..color = DarkTheme.grey1
           ..style = PaintingStyle.fill,
         orangePaint = Paint()
-          ..color = Palette.darkOrange
+          ..color = DarkTheme.gold
           ..style = PaintingStyle.fill,
         liquidAnim = CurvedAnimation(
           curve: Curves.elasticOut,

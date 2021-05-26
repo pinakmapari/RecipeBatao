@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:recipe_batao/config/palette.dart';
 import 'package:recipe_batao/screens/database.dart';
+import 'package:lit_firebase_auth/lit_firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'editPicture.dart';
 
@@ -26,12 +28,16 @@ class ProfileEdit extends StatefulWidget {
 }
 
 class _ProfileEditState extends State<ProfileEdit> {
+  final Future<String> _calculation = Future<String>.delayed(
+    const Duration(seconds: 2),
+    () => 'Loaded',
+  );
+
   String name = '';
   String email = '';
   String phNo = '';
   String age;
   List chosenCuisines = [];
-
   Map<String, dynamic> data = {};
 
   Map<String, bool> cuisines = {
@@ -68,7 +74,9 @@ class _ProfileEditState extends State<ProfileEdit> {
         centerTitle: true,
         backgroundColor: DarkTheme.grey1,
       ),
+      resizeToAvoidBottomInset: false,
       body: Container(
+        height: MediaQuery.of(context).size.height,
         width: double.infinity,
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
@@ -261,6 +269,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                       ),
                       onChanged: (text) {
                         age = text;
+                        //print(age);
                       },
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -325,8 +334,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                   color: DarkTheme.grey1,
                   onPressed: () {
                     Database().addData(name, email, phNo, age, chosenCuisines);
-                    Database().fetchData();
-                    print(Database.data);
+                    //print(name);
+                    //Database().fetchData();
                     Navigator.pop(context);
                   },
                   child: Text(

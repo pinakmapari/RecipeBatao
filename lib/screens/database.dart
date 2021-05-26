@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Database {
   static String userid;
-  String itemid;
+  static String itemid;
   static Map data = {};
   static Map itemData = {};
   Database();
@@ -12,32 +12,17 @@ class Database {
       Firestore.instance.collection('kitchenItems');
 
 //for user
-  Future updateUserData(String uid) async {
+  void updateUserData(String uid) {
     userid = uid;
-    data = {
+    userCollection.document(uid).updateData({
       'uid': uid,
-      'name': '',
-      'email': '',
-      'phNo': '',
-      'age': '',
-      'cuisines': [],
-      'imgAddress': '',
-    };
-    return await userCollection.document(uid).setData({
-      'uid': uid,
-      'name': '',
-      'email': '',
-      'phNo': '',
-      'age': '',
-      'cuisines': [],
-      'imgAddress': '',
     });
   }
 
-  Future addData(
-      String name, String email, String phNo, String age, List cuisines) async {
-    return await userCollection.document(userid).updateData({
-      'uid': userid,
+  void addData(
+      String name, String email, String phNo, String age, List cuisines) {
+    //print("User ID: " + userid);
+    userCollection.document(userid).updateData({
       'name': name,
       'email': email,
       'phNo': phNo,
@@ -46,24 +31,17 @@ class Database {
     });
   }
 
-  Future addImage(String imgAddress) async {
-    return await userCollection.document(userid).updateData({
+  void addImage(String imgAddress) {
+    userCollection.document(userid).updateData({
       'imgAddress': imgAddress,
     });
   }
 
-  Future fetchData() async {
-    DocumentSnapshot doc =
-        await Firestore.instance.collection('users').document(userid).get();
-    data = doc.data;
-    print(data);
-  }
-
   //for items
 
-  Future addItem(String name, String date, String qty, String location,
-      String color) async {
-    return await itemCollection.document(itemid).setData({
+  void addItem(
+      String name, String date, String qty, String location, String color) {
+    itemCollection.document(itemid).setData({
       'id': userid,
       'name': name,
       'date': date,
@@ -73,11 +51,5 @@ class Database {
     });
   }
 
-  Future fetchItems() async {
-    DocumentSnapshot itemdoc = await Firestore.instance
-        .collection('kitchenItems')
-        .document(itemid)
-        .get();
-    itemData = itemdoc.data;
-  }
+  void fetchItems() {}
 }
