@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../dashboard/recipeDetails.dart';
+import 'package:recipe_batao/config/palette.dart';
 
 class FoodList extends StatefulWidget {
   @override
@@ -36,6 +37,8 @@ class _FoodListState extends State<FoodList> {
                       'Ingredient\n        ${index+1}',
                       style: TextStyle(
                         fontSize: 16,
+                        fontFamily: 'Bebas',
+                        color: DarkTheme.grey5,
                       ),
                     ),
                   ],

@@ -5,6 +5,7 @@ import 'package:recipe_batao/screens/recipe/explore_page.dart';
 import 'package:recipe_batao/screens/recipe/recipedetails.dart';
 import 'package:recipe_batao/screens/splash.dart';
 import 'config/palette.dart';
+import 'package:recipe_batao/screens/myKitchen/expiryDetails.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         //   authenticated: HomeScreen(),
         //   unauthenticated: AuthScreen(),
         // ),
-        home: SplashScreen(),
+        home: IngredientDetails(),
       ),
     );
   }
