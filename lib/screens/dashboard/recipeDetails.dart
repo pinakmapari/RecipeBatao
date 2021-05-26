@@ -1,26 +1,9 @@
+import 'dart:convert';
+import 'package:http/http.dart';
 import 'package:flutter/material.dart';
-import '../myKitchen/expiryDetails.dart';
-
-class Recipes {
-  const Recipes({this.name, this.imageName});
-  final String name;
-  final String imageName;
-}
-
-List<Recipes> recipeList = [
-  const Recipes(imageName: 'CaesarSalad', name: 'Caesar Salad'),
-  const Recipes(imageName: 'PastaSalad', name: 'Pasta Salad'),
-  const Recipes(imageName: 'PotatoCurry', name: 'Potato Curry'),
-  const Recipes(imageName: 'VegetableRice', name: 'Vegetable Rice'),
-  const Recipes(imageName: 'MooliParatha', name: 'Mooli Paratha'),
-  const Recipes(imageName: 'IceCream', name: 'Ice Cream'),
-  const Recipes(imageName: 'Dosa', name: 'Dosa'),
-  const Recipes(imageName: 'VegetableSoup', name: 'Vegetable Soup'),
-  const Recipes(imageName: 'FruitSalad', name: 'Fruit Salad'),
-  const Recipes(imageName: 'MasalaPapad', name: 'Masala Papad'),
-  const Recipes(imageName: 'GulabJamun', name: 'Gulab Jamun'),
-  const Recipes(imageName: 'Roti', name: 'Roti'),
-];
+import 'package:recipe_batao/config/palette.dart';
+import 'package:recipe_batao/screens/recipeData.dart';
+import 'package:recipe_batao/services/api_services.dart';
 
 class Latest extends StatefulWidget {
   @override
@@ -28,13 +11,33 @@ class Latest extends StatefulWidget {
 }
 
 class _LatestState extends State<Latest> {
+  List<dynamic> recipeList = new List();
+
+  void getRecipes() async {
+    Response response = await get(
+        'https://api.spoonacular.com/recipes/random?number=5&apiKey=${ApiService.API_KEY}');
+
+    final data = json.decode(response.body);
+    recipeList = data['recipes'];
+    print(recipeList);
+    setState(() {
+      recipeList = data['recipes'] as List;
+    });
+  }
+
+  @override
+  void initState() {
+    getRecipes();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 200,
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
-        itemCount: 5,
+        itemCount: recipeList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
@@ -45,27 +48,29 @@ class _LatestState extends State<Latest> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => IngredientDetails()),
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              RecipeDetails(recipeModel: recipeList[index])),
                     );
                   },
                   child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                      ),
-                    ),
-                    child: Image.asset(
-                      "assets/images/${recipeList[index].imageName}.jpg",
+                    decoration: BoxDecoration(),
+                    child: Image(
+                      image: NetworkImage("${recipeList[index]['image']}"),
                       height: 170,
                     ),
                   ),
                 ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
                 Text(
-                  '${recipeList[index].name}',
+                  '${recipeList[index]['title']}',
                   style: TextStyle(
                     letterSpacing: 1,
                     fontSize: 16,
+                    fontFamily: 'Bebas',
+                    color: DarkTheme.grey7,
                   ),
                 ),
               ],

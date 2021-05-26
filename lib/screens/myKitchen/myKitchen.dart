@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_batao/screens/myKitchen/addItem.dart';
 import 'package:recipe_batao/screens/myKitchen/items.dart';
 import 'package:recipe_batao/screens/myKitchen/kitchenCategories.dart';
+import 'package:recipe_batao/config/palette.dart';
 
 class MyKitchen extends StatefulWidget {
   @override
@@ -13,13 +14,19 @@ class _MyKitchenState extends State<MyKitchen> {
   Widget build(BuildContext buildContext) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Kitchen'),
-        backgroundColor: Colors.grey[900],
+        title: Text(
+          'My Kitchen',
+          style: TextStyle(
+            fontFamily: 'Bebas',
+            color: DarkTheme.white,
+          ),
+        ),
+        backgroundColor: DarkTheme.grey1,
         actions: [
           IconButton(
             icon: Icon(
               Icons.search,
-              color: Colors.white,
+              color: DarkTheme.white,
               size: 24,
             ),
             onPressed: null,
@@ -27,14 +34,14 @@ class _MyKitchenState extends State<MyKitchen> {
           IconButton(
               icon: Icon(
                 Icons.notifications,
-                color: Colors.white,
+                color: DarkTheme.white,
                 size: 24,
               ),
               onPressed: null)
         ],
       ),
       body: Container(
-        color: Colors.grey[700],
+        color: DarkTheme.black,
         child: Column(
           children: <Widget>[
             SizedBox(
@@ -43,9 +50,9 @@ class _MyKitchenState extends State<MyKitchen> {
             Text(
               'Welcome to your kitchen!',
               style: TextStyle(
-                color: Colors.white,
+                color: DarkTheme.white,
                 fontSize: 20.0,
-                fontFamily: 'ComingSoon',
+                fontFamily: 'Bebas',
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -60,7 +67,9 @@ class _MyKitchenState extends State<MyKitchen> {
               height: 10,
             ),
             Items(),
+            Spacer(),
             Container(
+              color: DarkTheme.grey2,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Row(
@@ -71,7 +80,7 @@ class _MyKitchenState extends State<MyKitchen> {
                     IconButton(
                       icon: Icon(
                         Icons.fastfood,
-                        color: Colors.amber,
+                        color: DarkTheme.gold,
                         size: 35,
                       ),
                       onPressed: null,
@@ -82,7 +91,7 @@ class _MyKitchenState extends State<MyKitchen> {
                     IconButton(
                         icon: Icon(
                           Icons.add,
-                          color: Colors.amber,
+                          color: DarkTheme.gold,
                           size: 35,
                         ),
                         onPressed: () {

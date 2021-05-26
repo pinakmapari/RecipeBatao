@@ -1,8 +1,41 @@
+import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:recipe_batao/services/api_services.dart';
+import 'package:http/http.dart';
 import 'package:recipe_batao/screens/recipe/recipedetails.dart';
-import 'package:recipe_batao/model/recipemodel.dart';
-class NewRecipe extends StatelessWidget {
+
+class ExplorePage extends StatefulWidget {
+  final String query;
+
+  ExplorePage({@required this.query});
+  @override
+  _ExplorePageState createState() => _ExplorePageState();
+}
+
+class _ExplorePageState extends State<ExplorePage> {
+  List<dynamic> _recipes = new List();
+
+  void getRecipes() async {
+    Response response = await get(
+        'https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${widget.query}&addRecipeNutrition=true&addRecipeInformation=true&apiKey=${ApiService.API_KEY}');
+
+    final data = json.decode(response.body);
+
+    _recipes = data["results"];
+
+    setState(() {
+      _recipes = data["results"] as List;
+    });
+  }
+
+  @override
+  void initState() {
+    getRecipes();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +48,7 @@ class NewRecipe extends StatelessWidget {
             ListView.builder(
               physics: ScrollPhysics(),
               shrinkWrap: true,
-              itemCount: RecipeModel.demoRecipe.length,
+              itemCount: _recipes.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(
@@ -27,11 +60,11 @@ class NewRecipe extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => RecipeDetails(
-                            recipeModel: RecipeModel.demoRecipe[index],
+                            recipeModel: _recipes[index],
                           ),
                         )),
                     child: RecipeCard(
-                      recipeModel: RecipeModel.demoRecipe[index],
+                      recipeModel: _recipes[index],
                     ),
                   ),
                 );
@@ -45,7 +78,7 @@ class NewRecipe extends StatelessWidget {
 }
 
 class RecipeCard extends StatefulWidget {
-  final RecipeModel recipeModel;
+  final recipeModel;
   RecipeCard({
     @required this.recipeModel,
   });
@@ -69,12 +102,12 @@ class _RecipeCardState extends State<RecipeCard> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(24),
                 child: Hero(
-                  tag: widget.recipeModel.imgPath,
+                  tag: widget.recipeModel['image'],
                   child: Image(
                     height: 320,
                     width: 320,
                     fit: BoxFit.cover,
-                    image: AssetImage(widget.recipeModel.imgPath),
+                    image: NetworkImage('${widget.recipeModel['image']}'),
                   ),
                 ),
               ),
@@ -113,14 +146,14 @@ class _RecipeCardState extends State<RecipeCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.recipeModel.title,
+                      widget.recipeModel['title'],
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                     SizedBox(
                       height: 8,
                     ),
                     Text(
-                      widget.recipeModel.writer,
+                      widget.recipeModel['sourceName'],
                       style: Theme.of(context).textTheme.caption,
                     ),
                   ],
@@ -142,7 +175,7 @@ class _RecipeCardState extends State<RecipeCard> {
                       width: 4,
                     ),
                     Text(
-                      widget.recipeModel.cookingTime.toString() + '\'',
+                      widget.recipeModel['readyInMinutes'].toString() + '\'',
                     ),
                     Spacer(),
                     InkWell(

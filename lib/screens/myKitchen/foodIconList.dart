@@ -7,6 +7,7 @@ class FoodList extends StatefulWidget {
 }
 
 class _FoodListState extends State<FoodList> {
+  List<dynamic> recipeList = new List();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,12 +22,15 @@ class _FoodListState extends State<FoodList> {
                 child: Column(
                   children: [
                       RaisedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                         
+                        },
                         shape: CircleBorder(),
                         child: Container(
                           //child: Image.asset("assets/images/${recipeList[index].imageName}.jpg"),
                           child: CircleAvatar(
-                            backgroundImage: AssetImage("assets/images/${recipeList[index].imageName}.jpg"),
+
+                            backgroundImage: NetworkImage("${recipeList[index]['image']}"),
                             radius: 45,
                           ),
                         ),

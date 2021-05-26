@@ -61,18 +61,18 @@ class _ProfileEditState extends State<ProfileEdit> {
         title: Text(
           'Edit My Profile',
           style: TextStyle(
-            color: Palette.amber,
-            fontFamily: 'ComingSoon',
+            color: DarkTheme.white,
+            fontFamily: 'Bebas',
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.grey[900],
+        backgroundColor: DarkTheme.grey1,
       ),
       body: Container(
         width: double.infinity,
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
-          color: Colors.grey[800],
+          color: DarkTheme.black,
         ),
         child: Padding(
           padding: EdgeInsets.fromLTRB(10.0, 20.0, 40.0, 0.0),
@@ -99,24 +99,26 @@ class _ProfileEditState extends State<ProfileEdit> {
                   child: Text(
                     'Edit Picture',
                     style: TextStyle(
-                      fontFamily: 'CartoonistHand',
-                      color: Colors.white,
+                      fontFamily: 'Bebas',
+                      color: DarkTheme.gold,
                       fontSize: 20.0,
                     ),
                   ),
                 ),
               ),
               Divider(
-                color: Colors.grey[100],
+                color: DarkTheme.grey5,
                 height: 30.0,
+                indent: 20,
               ),
               Row(
                 children: <Widget>[
                   Text(
                     'Name: ',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: DarkTheme.white,
                       fontWeight: FontWeight.bold,
+                      fontFamily: 'Bebas',
                     ),
                   ),
                   SizedBox(
@@ -127,8 +129,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                     height: 40.0,
                     child: TextField(
                       style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'QarmicSans',
+                        color: DarkTheme.white,
+                        fontFamily: 'Bebas',
                         letterSpacing: 1.0,
                       ),
                       onChanged: (text) {
@@ -140,8 +142,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                         ),
                         labelText: 'Enter Name',
                         labelStyle: TextStyle(
-                          fontFamily: 'BehindBlueEyes',
-                          color: Colors.amber[300],
+                          fontFamily: 'Bebas',
+                          color: DarkTheme.grey3,
                         ),
                       ),
                     ),
@@ -156,8 +158,9 @@ class _ProfileEditState extends State<ProfileEdit> {
                   Text(
                     'Email ID: ',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: DarkTheme.white,
                       fontWeight: FontWeight.bold,
+                      fontFamily: 'Bebas',
                     ),
                   ),
                   SizedBox(
@@ -168,8 +171,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                     height: 40.0,
                     child: TextField(
                       style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'QarmicSans',
+                        color: DarkTheme.white,
+                        fontFamily: 'Bebas',
                         letterSpacing: 1.0,
                       ),
                       onChanged: (text) {
@@ -181,8 +184,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                         ),
                         labelText: 'Enter Email Id',
                         labelStyle: TextStyle(
-                          fontFamily: 'BehindBlueEyes',
-                          color: Colors.amber[300],
+                          fontFamily: 'Bebas',
+                          color: DarkTheme.grey3,
                         ),
                       ),
                     ),
@@ -197,8 +200,9 @@ class _ProfileEditState extends State<ProfileEdit> {
                   Text(
                     'Phone Number: ',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: DarkTheme.white,
                       fontWeight: FontWeight.bold,
+                      fontFamily: 'Bebas',
                     ),
                   ),
                   SizedBox(
@@ -209,8 +213,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                     height: 40.0,
                     child: TextField(
                       style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'QarmicSans',
+                        color: DarkTheme.white,
+                        fontFamily: 'Bebas',
                         letterSpacing: 1.0,
                       ),
                       onChanged: (text) {
@@ -222,8 +226,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                         ),
                         labelText: 'Enter Phone number',
                         labelStyle: TextStyle(
-                          fontFamily: 'BehindBlueEyes',
-                          color: Colors.amber[300],
+                          fontFamily: 'Bebas',
+                          color: DarkTheme.grey3,
                         ),
                       ),
                     ),
@@ -238,8 +242,9 @@ class _ProfileEditState extends State<ProfileEdit> {
                   Text(
                     'Age: ',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: DarkTheme.white,
                       fontWeight: FontWeight.bold,
+                      fontFamily: 'Bebas',
                     ),
                   ),
                   SizedBox(
@@ -250,8 +255,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                     height: 40.0,
                     child: TextField(
                       style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'QarmicSans',
+                        color: DarkTheme.white,
+                        fontFamily: 'Bebas',
                         letterSpacing: 1.0,
                       ),
                       onChanged: (text) {
@@ -263,22 +268,25 @@ class _ProfileEditState extends State<ProfileEdit> {
                         ),
                         labelText: 'Enter Age',
                         labelStyle: TextStyle(
-                          fontFamily: 'BehindBlueEyes',
-                          color: Colors.amber[300],
+                          fontFamily: 'Bebas',
+                          color: DarkTheme.grey3,
                         ),
                       ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(
-                height: 10.0,
+              Divider(
+                height: 20.0,
+                indent: 20,
+                color: DarkTheme.grey6,
               ),
               Text(
                 'Favourite cuisines',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'QarmicSans',
+                  color: DarkTheme.gold,
+                  fontFamily: 'Bebas',
+                  fontSize: 17,
                   letterSpacing: 1.0,
                 ),
               ),
@@ -292,14 +300,14 @@ class _ProfileEditState extends State<ProfileEdit> {
                         title: new Text(
                           key,
                           style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'QarmicSans',
-                            fontSize: 13.0,
+                            color: DarkTheme.white,
+                            fontFamily: 'Bebas',
+                            fontSize: 15.0,
                           ),
                         ),
                         value: cuisines[key],
-                        activeColor: Colors.blue,
-                        checkColor: Colors.white,
+                        activeColor: DarkTheme.grey2,
+                        checkColor: DarkTheme.white,
                         onChanged: (bool value) {
                           setState(() {
                             cuisines[key] = value;
@@ -311,17 +319,23 @@ class _ProfileEditState extends State<ProfileEdit> {
                   ),
                 ),
               ),
-              RaisedButton(
-                color: Colors.grey[800],
-                onPressed: () {
-                  Database().addData(name, email, phNo, age, chosenCuisines);
-                  Database().fetchData();
-                  print(Database.data);
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  'Done',
-                  style: TextStyle(color: Colors.white),
+              Spacer(),
+              Center(
+                child: RaisedButton(
+                  color: DarkTheme.grey1,
+                  onPressed: () {
+                    Database().addData(name, email, phNo, age, chosenCuisines);
+                    Database().fetchData();
+                    print(Database.data);
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'Done',
+                    style: TextStyle(
+                      color: DarkTheme.white,
+                      fontFamily: 'Bebas',
+                    ),
+                  ),
                 ),
               ),
             ],

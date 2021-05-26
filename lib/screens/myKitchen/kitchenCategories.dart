@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_batao/config/palette.dart';
 
 class KitchenCategories extends StatefulWidget {
   @override
@@ -35,15 +36,15 @@ class _KitchenCategoriesState extends State<KitchenCategories> {
           vertical: 5,
         ),
         decoration: BoxDecoration(
-          color:
-              selectedIndex == index ? Colors.amber[100] : Colors.transparent,
+          color: selectedIndex == index ? DarkTheme.grey1 : Colors.transparent,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Text(
           categories[index],
           style: TextStyle(
+            fontFamily: 'Bebas',
             fontWeight: FontWeight.bold,
-            color: selectedIndex == index ? Colors.red[700] : Colors.amber,
+            color: selectedIndex == index ? DarkTheme.gold : DarkTheme.pink,
           ),
         ),
       ),
