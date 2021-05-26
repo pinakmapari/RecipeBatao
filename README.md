@@ -1,6 +1,5 @@
-<<<<<<< HEAD
+
 # RecipeBatao
-=======
 # recipe_batao
 
 A new Flutter project.
@@ -17,4 +16,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
->>>>>>> f3d662b9d4f4b779364ba537d64100ede9353f1c
