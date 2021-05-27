@@ -350,7 +350,7 @@ class _AddItemState extends State<AddItem> {
                       month.toString() +
                       '/' +
                       year.toString();
-                  String fqty = itemQty.toString() + quantifier;
+                  String fqty = itemQty.toString() + ' ' + quantifier;
                   String c = color.toString();
                   Database().addItem(itemName, fdate, fqty, location, c);
                   //Database().fetchItems();
