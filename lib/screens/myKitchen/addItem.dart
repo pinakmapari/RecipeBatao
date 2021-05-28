@@ -12,11 +12,12 @@ class _AddItemState extends State<AddItem> {
   String itemName;
   String quantifier = 'g';
   String location = 'Fridge';
-  int itemQty;
+  String itemQty;
   int date = 01, month = 01, year = 2021;
   var color;
   @override
   void initState() {
+    super.initState();
     color = generate();
   }
 
@@ -256,7 +257,9 @@ class _AddItemState extends State<AddItem> {
                             fontFamily: 'Bebas',
                             letterSpacing: 1.0,
                           ),
-                          onChanged: (text) {},
+                          onChanged: (text) {
+                            itemQty = text;
+                          },
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
@@ -350,11 +353,9 @@ class _AddItemState extends State<AddItem> {
                       month.toString() +
                       '/' +
                       year.toString();
-                  String fqty = itemQty.toString() + ' ' + quantifier;
+                  String fqty = itemQty + ' ' + quantifier;
                   String c = color.toString();
                   Database().addItem(itemName, fdate, fqty, location, c);
-                  //Database().fetchItems();
-                  //print(Database.itemData);
                   Navigator.pop(context);
                 },
                 child: Text(

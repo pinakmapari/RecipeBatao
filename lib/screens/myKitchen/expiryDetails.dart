@@ -3,16 +3,32 @@ import 'foodIconList.dart';
 import 'package:recipe_batao/config/palette.dart';
 
 class IngredientDetails extends StatefulWidget {
+  final List details;
+  const IngredientDetails({Key key, @required this.details}) : super(key: key);
   @override
   _IngredientDetailsState createState() => _IngredientDetailsState();
 }
 
 class _IngredientDetailsState extends State<IngredientDetails> {
+  @override
+  IngredientDetails get widget => super.widget;
+
   String ingredient = "Ingredient Name";
   String category = "Category";
   int kitchenSince = 3;
   int expiringIn = 4;
-  int amount = 750;
+  String amount = '750';
+  List det;
+  @override
+  void initState() {
+    super.initState();
+    det = widget.details;
+    print(det);
+    ingredient = det[0];
+    category = det[3];
+    expiringIn = int.parse(det[1]);
+    amount = det[2];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +37,8 @@ class _IngredientDetailsState extends State<IngredientDetails> {
         backgroundColor: DarkTheme.black,
         actions: [
           IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () {},
+            icon: Icon(Icons.delete),
+            onPressed: () {},
           ),
           IconButton(
             icon: Icon(Icons.edit),

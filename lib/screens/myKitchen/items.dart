@@ -3,6 +3,7 @@ import 'package:recipe_batao/config/palette.dart';
 import 'dart:math';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:recipe_batao/screens/myKitchen/expiryDetails.dart';
 
 class Items extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _ItemsState extends State<Items> {
     final litUser = context.getSignedInUser();
     litUser.when((user) => userid = user.uid,
         empty: () {}, initializing: () {});
-    print(userid);
+    //print(userid);
     collectionStream =
         Firestore.instance.collection('kitchenItems').snapshots();
     setState(() {});
@@ -66,87 +67,103 @@ class _ItemsState extends State<Items> {
 
   Widget createCard(String name, String days, String qty, String loc) {
     var color = colors[_random.nextInt(colors.length)];
-    return Container(
-      height: 125,
-      width: double.infinity,
-      child: Card(
-        color: DarkTheme.grey1,
-        child: Center(
-          child: Row(
-            children: [
-              SizedBox(
-                width: 10,
-              ),
-              CircleAvatar(
-                backgroundColor: color,
-                radius: 45,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              SizedBox(
-                width: 130,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Text(
-                      name,
-                      style: TextStyle(
-                        color: DarkTheme.gold,
-                        fontSize: 23,
-                        fontFamily: 'Bebas',
+    int index = 0;
+    for (int i = 0; i < itemDetails.length; i++) {
+      String temp = itemDetails[i][0];
+      if (name == temp) {
+        index = i;
+      }
+    }
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) =>
+                  IngredientDetails(details: itemDetails[index])));
+        });
+      },
+      child: Container(
+        height: 125,
+        width: double.infinity,
+        child: Card(
+          color: DarkTheme.grey1,
+          child: Center(
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                CircleAvatar(
+                  backgroundColor: color,
+                  radius: 45,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                SizedBox(
+                  width: 130,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 30,
                       ),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Center(
-                      child: Text(
-                        'Expires in ' + days + '  days',
+                      Text(
+                        name,
                         style: TextStyle(
-                          color: DarkTheme.pink,
-                          fontSize: 15,
+                          color: DarkTheme.gold,
+                          fontSize: 23,
                           fontFamily: 'Bebas',
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              SizedBox(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Text(
-                      qty,
-                      style: TextStyle(
-                        color: DarkTheme.white,
-                        fontSize: 30,
-                        fontFamily: 'Bebas',
+                      SizedBox(
+                        height: 8,
                       ),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      loc,
-                      style: TextStyle(
-                        color: DarkTheme.grey4,
-                        fontSize: 25,
-                        fontFamily: 'Bebas',
+                      Center(
+                        child: Text(
+                          'Expires in ' + days + '  days',
+                          style: TextStyle(
+                            color: DarkTheme.pink,
+                            fontSize: 15,
+                            fontFamily: 'Bebas',
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  width: 15,
+                ),
+                SizedBox(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 25,
+                      ),
+                      Text(
+                        qty,
+                        style: TextStyle(
+                          color: DarkTheme.white,
+                          fontSize: 30,
+                          fontFamily: 'Bebas',
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        loc,
+                        style: TextStyle(
+                          color: DarkTheme.grey4,
+                          fontSize: 25,
+                          fontFamily: 'Bebas',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

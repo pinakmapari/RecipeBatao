@@ -17,7 +17,7 @@ class Body extends StatelessWidget {
             height: 10,
           ),
           Text(
-            'Hello {name}!',
+            'Hello Foodie!',
             style: TextStyle(
               fontSize: 35,
               fontWeight: FontWeight.bold,

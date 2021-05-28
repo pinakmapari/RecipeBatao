@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:recipe_batao/config/palette.dart';
 import 'package:recipe_batao/services/api_services.dart';
 import 'package:http/http.dart';
 import 'package:recipe_batao/screens/recipe/recipedetails.dart';
@@ -39,6 +40,7 @@ class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: DarkTheme.black,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -147,14 +149,14 @@ class _RecipeCardState extends State<RecipeCard> {
                   children: [
                     Text(
                       widget.recipeModel['title'],
-                      style: Theme.of(context).textTheme.subtitle1,
+                      style: TextStyle(color: DarkTheme.gold),
                     ),
                     SizedBox(
                       height: 8,
                     ),
                     Text(
                       widget.recipeModel['sourceName'],
-                      style: Theme.of(context).textTheme.caption,
+                      style: TextStyle(color: DarkTheme.grey7),
                     ),
                   ],
                 ),
@@ -170,12 +172,14 @@ class _RecipeCardState extends State<RecipeCard> {
                     ),
                     Icon(
                       FlutterIcons.timer_mco,
+                      color: DarkTheme.grey4,
                     ),
                     SizedBox(
                       width: 4,
                     ),
                     Text(
                       widget.recipeModel['readyInMinutes'].toString() + '\'',
+                      style: TextStyle(color: DarkTheme.grey5),
                     ),
                     Spacer(),
                     InkWell(
@@ -186,7 +190,7 @@ class _RecipeCardState extends State<RecipeCard> {
                       },
                       child: Icon(
                         FlutterIcons.heart_circle_mco,
-                        color: loved ? Colors.red : Colors.black,
+                        color: loved ? DarkTheme.pink : DarkTheme.white,
                       ),
                     ),
                   ],

@@ -11,6 +11,12 @@ class MyKitchen extends StatefulWidget {
 
 class _MyKitchenState extends State<MyKitchen> {
   @override
+  void initState() {
+    super.initState();
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext buildContext) {
     return Scaffold(
       appBar: AppBar(
@@ -68,17 +74,15 @@ class _MyKitchenState extends State<MyKitchen> {
             SizedBox(
               height: 10,
             ),
-            Items(),
-            Spacer(),
+            Expanded(child: Items()),
             Container(
+              height: 55,
               color: DarkTheme.grey2,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SizedBox(
-                      width: 50,
-                    ),
                     IconButton(
                       icon: Icon(
                         Icons.fastfood,
@@ -86,9 +90,6 @@ class _MyKitchenState extends State<MyKitchen> {
                         size: 35,
                       ),
                       onPressed: null,
-                    ),
-                    SizedBox(
-                      width: 175,
                     ),
                     IconButton(
                         icon: Icon(
