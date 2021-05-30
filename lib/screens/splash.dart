@@ -22,7 +22,7 @@ class SplashScreen extends StatelessWidget {
         _navigateToAuthScreen(context);
       },
       initializing: (_) {
-        print('initialising');
+
       },
     );
 

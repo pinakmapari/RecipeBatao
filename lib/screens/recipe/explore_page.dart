@@ -33,8 +33,8 @@ class _ExplorePageState extends State<ExplorePage> {
 
   @override
   void initState() {
-    getRecipes();
     super.initState();
+    getRecipes();
   }
 
   @override

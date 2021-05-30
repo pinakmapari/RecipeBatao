@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'foodIconList.dart';
+import 'package:recipe_batao/screens/myKitchen/cookitwith.dart';
 import 'package:recipe_batao/config/palette.dart';
 
 class IngredientDetails extends StatefulWidget {
@@ -12,7 +12,9 @@ class IngredientDetails extends StatefulWidget {
 class _IngredientDetailsState extends State<IngredientDetails> {
   @override
   IngredientDetails get widget => super.widget;
-
+  Widget buildResults(BuildContext context) {
+    return Latest1(query: ingredient,);
+  }
   String ingredient = "Ingredient Name";
   String category = "Category";
   int kitchenSince = 3;
@@ -23,7 +25,6 @@ class _IngredientDetailsState extends State<IngredientDetails> {
   void initState() {
     super.initState();
     det = widget.details;
-    print(det);
     ingredient = det[0];
     category = det[3];
     expiringIn = int.parse(det[1]);
@@ -228,7 +229,7 @@ class _IngredientDetailsState extends State<IngredientDetails> {
           SizedBox(
             height: 5,
           ),
-          FoodList(),
+          Latest1(query: '$ingredient',),
           Divider(
             color: Theme3.purple,
             thickness: 2,

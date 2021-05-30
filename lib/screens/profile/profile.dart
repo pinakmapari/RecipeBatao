@@ -56,7 +56,7 @@ class _MyProfileState extends State<MyProfile> {
         centerTitle: true,
         backgroundColor: DarkTheme.grey1,
       ),
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       body:
           SingleChildScrollView(child: returnFB(_calculation, documentStream)),
       floatingActionButton: FloatingActionButton(
@@ -105,21 +105,34 @@ class _MyProfileState extends State<MyProfile> {
             ];
           } else {
             children = const <Widget>[
-              SizedBox(
-                child: CircularProgressIndicator(),
-                width: 60,
-                height: 60,
+              Padding(
+                padding: EdgeInsets.fromLTRB(60, 50, 40, 40),
+                child: SizedBox(
+                  child: CircularProgressIndicator(),
+                  //width: 60,
+                  //height: 60,
+                ),   
               ),
               Padding(
-                padding: EdgeInsets.only(top: 16),
-                child: Text('Loading...'),
+                padding: EdgeInsets.fromLTRB(80, 10, 40, 60),
+                child: Text('Loading...',
+                style: TextStyle(
+                  color: DarkTheme.white,
+                  fontSize: 60,
+                  fontFamily: 'Bebas'
+                ),),
               )
             ];
           }
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: children,
+          return Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: DarkTheme.black,
+                      child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: children,
+            ),
           );
         },
       ),
@@ -138,7 +151,6 @@ class _MyProfileState extends State<MyProfile> {
             return Text("Loading");
           }
           data = matchID(snapshot.data.documents);
-          print(data);
           name = data['name'];
           email = data['email'];
           age = data['age'];
@@ -303,7 +315,6 @@ class _MyProfileState extends State<MyProfile> {
     for (var map in snapshot) {
       String uid = map['uid'];
       if (userid == uid) {
-        print("match ID: " + uid);
         return map.data;
       }
     }

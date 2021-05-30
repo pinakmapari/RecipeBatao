@@ -19,13 +19,9 @@ class _RecipesGridViewState extends State<RecipesGridView> {
     Response response = await get(
         'https://api.spoonacular.com/recipes/complexSearch?type=${widget.mealtype}&apiKey=${ApiService.API_KEY}');
 
-    //print(response.body);
     final data = json.decode(response.body);
-    //print(data);
-    //print(data["results"]);
     recipeList = data["results"];
-    //print(recipeList);
-    //print(data["results"][0]["title"]);
+
 
     setState(() {
       recipeList = data["results"] as List;

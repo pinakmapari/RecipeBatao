@@ -19,7 +19,6 @@ class _LatestState extends State<Latest> {
 
     final data = json.decode(response.body);
     recipeList = data['recipes'];
-    print(recipeList);
     setState(() {
       recipeList = data['recipes'] as List;
     });

@@ -26,7 +26,6 @@ class _MainDrawerState extends State<MainDrawer> {
     final litUser = context.getSignedInUser();
     litUser.when((user) => userid = user.uid,
         empty: () {}, initializing: () {});
-    print(userid);
     doc = Firestore.instance.collection('users').document(userid).snapshots();
     setState(() {});
   }
@@ -106,7 +105,7 @@ class _MainDrawerState extends State<MainDrawer> {
             var doc = snapshot.data.data;
             name = doc['name'];
             img = doc['imgAddress'];
-            print(doc);
+
           }
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -145,25 +144,6 @@ class _MainDrawerState extends State<MainDrawer> {
                 },
                 child: Text(
                   'My Profile',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    fontFamily: 'Bebas',
-                    color: DarkTheme.grey6,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              FlatButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MyProfile()),
-                  );
-                },
-                child: Text(
-                  'Favourites',
                   style: TextStyle(
                     fontSize: 30.0,
                     fontFamily: 'Bebas',

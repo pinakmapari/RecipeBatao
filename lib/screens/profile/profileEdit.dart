@@ -269,7 +269,6 @@ class _ProfileEditState extends State<ProfileEdit> {
                       ),
                       onChanged: (text) {
                         age = text;
-                        //print(age);
                       },
                       decoration: InputDecoration(
                         border: OutlineInputBorder(

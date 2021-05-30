@@ -58,7 +58,6 @@ class BackgroundPainter extends CustomPainter {
   final Paint orangePaint;
   @override
   void paint(Canvas canvas, Size size) {
-    print('painting..');
     paintBlue(canvas, size);
     paintGrey(canvas, size);
     paintOrange(canvas, size);

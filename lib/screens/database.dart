@@ -21,7 +21,6 @@ class Database {
 
   void addData(
       String name, String email, String phNo, String age, List cuisines) {
-    //print("User ID: " + userid);
     userCollection.document(userid).updateData({
       'name': name,
       'email': email,

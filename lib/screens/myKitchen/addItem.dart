@@ -73,7 +73,6 @@ class _AddItemState extends State<AddItem> {
   Widget build(BuildContext buildContext) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: false,
       backgroundColor: DarkTheme.black,
       appBar: AppBar(
         backgroundColor: DarkTheme.grey1,
@@ -198,7 +197,7 @@ class _AddItemState extends State<AddItem> {
                           onChanged: (int newVal) {
                             setState(() {
                               month = newVal;
-                              print(month);
+   
                             });
                           },
                         ),
@@ -293,7 +292,6 @@ class _AddItemState extends State<AddItem> {
                       onChanged: (String newVal) {
                         setState(() {
                           quantifier = newVal;
-                          print(quantifier);
                         });
                       },
                     ),

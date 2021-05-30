@@ -24,7 +24,7 @@ class _ItemsState extends State<Items> {
     final litUser = context.getSignedInUser();
     litUser.when((user) => userid = user.uid,
         empty: () {}, initializing: () {});
-    //print(userid);
+
     collectionStream =
         Firestore.instance.collection('kitchenItems').snapshots();
     setState(() {});
@@ -174,7 +174,7 @@ class _ItemsState extends State<Items> {
     return FutureBuilder(
       future: _calculation, // a previously-obtained Future<String> or null
       builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-        //Database().fetchData();
+
         List<Widget> children;
         if (snapshot.hasData) {
           children = <Widget>[
@@ -229,13 +229,11 @@ class _ItemsState extends State<Items> {
             List<Map> dataOfItems = [];
             snapshot.data.documents.forEach((element) {
               var items = element.data;
-              dataOfItems.add(items);
-              //print(items);
+              if (items['id']==userid){
+                dataOfItems.add(items);
+              }
             });
-            //print(dataOfItems);
             itemDetails = sortData(dataOfItems);
-            //print(itemDetails);
-
           }
 
           return Expanded(
@@ -253,30 +251,27 @@ class _ItemsState extends State<Items> {
   }
 
   List sortData(List itemDet) {
-    print(itemDet);
     List finalList = [];
     for (int i = 0; i < itemDet.length; i++) {
       Map singleItem = itemDet[i];
-      //print(singleItem);
       String expDate = singleItem['date'];
-      //print(expDate);
       List<String> dlist = expDate.split('/');
       var edate = DateTime(
           int.parse(dlist[2]), int.parse(dlist[1]), int.parse(dlist[0]));
-      //print(edate);
-      //print(curdate);
+
+
       int x = edate.difference(curdate).inDays;
-      //print(x);
+
       String itemName = singleItem['name'];
-      //print(itemName);
+
       String fqty = singleItem['qty'];
-      //print(fqty);
+
       String loc = singleItem['loc'];
-      //print(loc);
+
       List newList = [itemName, x.toString(), fqty, loc];
-      //createCard(itemName, x.toString(), fqty, loc);
+
       finalList.add(newList);
-      //print(finalList);
+
     }
     return finalList;
   }
