@@ -83,7 +83,7 @@ class _ItemsState extends State<Items> {
         });
       },
       child: Container(
-        height: 125,
+        height: 130,
         width: double.infinity,
         child: Card(
           color: DarkTheme.grey1,

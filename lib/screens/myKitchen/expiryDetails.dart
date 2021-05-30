@@ -99,7 +99,7 @@ class _IngredientDetailsState extends State<IngredientDetails> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                height: 150,
+                height: 180,
                 child: Column(
                   children: [
                     Text(
@@ -129,14 +129,14 @@ class _IngredientDetailsState extends State<IngredientDetails> {
                 ),
               ),
               Container(
-                height: 150,
+                height: 180,
                 child: VerticalDivider(
                   color: Theme3.purple,
                   thickness: 2,
                 ),
               ),
               Container(
-                height: 150,
+                height: 180,
                 child: Column(
                   children: [
                     Text(
@@ -166,14 +166,14 @@ class _IngredientDetailsState extends State<IngredientDetails> {
                 ),
               ),
               Container(
-                height: 150,
+                height: 180,
                 child: VerticalDivider(
                   color: Theme3.purple,
                   thickness: 2,
                 ),
               ),
               Container(
-                height: 150,
+                height: 180,
                 child: Column(
                   children: [
                     Text(
@@ -214,7 +214,7 @@ class _IngredientDetailsState extends State<IngredientDetails> {
             endIndent: 17,
           ),
           SizedBox(
-            height: 10,
+            height: 40,
           ),
           Text(
             'Let\'s cook it with',
@@ -227,7 +227,7 @@ class _IngredientDetailsState extends State<IngredientDetails> {
             ),
           ),
           SizedBox(
-            height: 5,
+            height: 30,
           ),
           Latest1(query: '$ingredient',),
           Divider(

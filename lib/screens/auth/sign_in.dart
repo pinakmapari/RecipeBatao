@@ -57,7 +57,7 @@ class SignIn extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Column(
@@ -69,7 +69,7 @@ class SignIn extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 24.0,
+                      height: 16.0,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -89,6 +89,7 @@ class SignIn extends StatelessWidget {
                       ],
                     ),
                     const Spacer(),
+
                     InkWell(
                         splashColor: Colors.white,
                         onTap: () {
