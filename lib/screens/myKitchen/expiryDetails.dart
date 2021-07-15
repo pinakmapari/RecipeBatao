@@ -190,7 +190,7 @@ class _IngredientDetailsState extends State<IngredientDetails> {
                       height: 10,
                     ),
                     Text(
-                      '$amount\ngm',
+                      '$amount\n',
                       style: TextStyle(
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
