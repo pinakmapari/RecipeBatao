@@ -37,5 +37,3 @@ The app is developed using Flutter, Lit Firebase for Login and Signup, Firestore
 ## Our Team
 
 Tejas Lipare, Mrunmai Abhyankar, Sejal Pekam, Pinak Mapari
-
-Special Thanks to Omkar Bhope for helping us out.
