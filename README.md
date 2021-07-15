@@ -1,18 +1,27 @@
 
 # RecipeBatao
-# recipe_batao
 
-A new Flutter project.
+
+A Project Based Learning Flutter project.
 
 ## Getting Started
+The app is developed using Flutter, Lit Firebase for Login and Signup, Firestore for Backend and Spoonacular API for fetching Recipes.
 
-This project is a starting point for a Flutter application.
+# Features of the App
 
-A few resources to get you started if this is your first Flutter project:
+a) To help the user by suggesting recipes according to the ingredients present in the fridge and/or kitchen.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+b) To provide recipes to the user by accessing the ingredients present in his/her kitchen and/or refrigerator.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+c) To provide variety of recipes to the user, so he/she may prioritize unique recipes over the common ones.
+
+d) To keep a track of expiry dates of all the ingredients present in the user's kitchen.
+
+e) To save user's time by displaying a list of ingredients which are to be bought for the given recipe.
+
+# Our Team
+
+
+Tejas Lipare, Mrunmai Abhyankar, Sejal Pekam, Pinak Mapari
+
+Special Thanks to Omkar Bhope for helping us out.
